@@ -1,0 +1,6 @@
+{
+  "hosting": {
+    "public": "dist\tp-sala-de-juegos\browser",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+  }
+}
