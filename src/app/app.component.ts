@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
+import { AngularFireModule } from '@angular/fire/compat';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
-import { RouterModule } from '@angular/router';
-import { routes } from './app.routes';
+import { firebaseConfig } from '../enviroments/enviroments';
 
 @Component({
   selector: 'app-root',

@@ -1,0 +1,28 @@
+.quien-soy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10%;
+}
+
+#links {
+  display: flex;
+  justify-content: space-between; /* Distributes icons evenly */
+  width: 100%; /* Take the full width of the parent (image) */
+  max-width: 240px; /* Ensure the div doesn't exceed the image's width */
+  margin: 0 auto; /* Centers the icons */
+  padding-top: 10px; /* Adds space between the image and icons */
+}
+
+#links a {
+  text-decoration: none;
+  display: inline-block;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+  border-width: 2px;
+  border-style: solid;
+  border-color: black;
+}

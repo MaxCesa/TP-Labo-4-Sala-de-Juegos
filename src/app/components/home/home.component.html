@@ -1,0 +1,13 @@
+<nav><button (click)="toQuienSoy()">¿Quien Soy?</button></nav>
+
+<div *ngIf="userName; else noUser">
+    <h1>Bienvenido, {{ userName }}!</h1>
+    <button>Log-Out</button>
+</div>
+<ng-template #noUser>
+    <h2>No estas Logeado.</h2>
+    <button>LogIn</button>
+    <button>Registrarse</button>
+</ng-template>
+
+<h2>Bajo construccion</h2>
