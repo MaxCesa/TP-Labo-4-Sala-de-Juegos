@@ -1,0 +1,21 @@
+<div class="container" id="container">
+    <div class="form-container">
+        <h1>Registro</h1>
+        <input type="email" #userName class="formControl" placeholder="Email" required />
+        <ng-template [ngIf]="mailAlreadyRegistered"><label class="passwordMatch">Este correo ya esta
+                registrado!</label></ng-template>
+        <input type="password" #userPassword class="formControl" placeholder="Password" />
+        <input type="password" #confirmPassword class="formControl" placeholder="Confirm Password" />
+        <ng-template [ngIf]="pswdDontMatch"><label class="pswdMatch">Las contraseñas no coinciden!</label></ng-template>
+        <button (click)="register(userName.value, userPassword.value, confirmPassword.value)">Registrarse</button>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-right">
+                <h1>Bienvenido!</h1>
+                <p>Si ya tenes una cuenta por favor hace click en ingresar!</p>
+                <button class="ghost" id="signUp" routerLink="/login">Ingresar</button>
+            </div>
+        </div>
+    </div>
+</div>

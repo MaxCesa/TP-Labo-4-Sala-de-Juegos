@@ -7,11 +7,11 @@
 
 #links {
   display: flex;
-  justify-content: space-between; /* Distributes icons evenly */
-  width: 100%; /* Take the full width of the parent (image) */
-  max-width: 240px; /* Ensure the div doesn't exceed the image's width */
-  margin: 0 auto; /* Centers the icons */
-  padding-top: 10px; /* Adds space between the image and icons */
+  justify-content: space-between;
+  width: 100%;
+  max-width: 240px;
+  margin: 0 auto;
+  padding-top: 10px;
 }
 
 #links a {
@@ -25,4 +25,46 @@ img {
   border-width: 2px;
   border-style: solid;
   border-color: black;
+}
+
+nav {
+  background-color: #333;
+  width: 100%;
+  padding: 10px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #f4f4f9;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+  }
+
+  nav li {
+    padding: 10px 0;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
 }

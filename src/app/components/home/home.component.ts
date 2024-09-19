@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Auth, getAuth, User, onAuthStateChanged } from '@angular/fire/auth';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
@@ -11,12 +11,10 @@ import { Router } from '@angular/router';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-  auth: Auth;
   user: User | null;
   userName: string;
-
+  private auth = inject(Auth);
   constructor(private router: Router) {
-    this.auth = getAuth();
     this.user = this.auth.currentUser;
     this.userName = '';
   }
@@ -31,5 +29,11 @@ export class HomeComponent {
 
   async toQuienSoy() {
     await this.router.navigateByUrl('/quien-soy');
+  }
+
+  async logOff() {
+    await this.auth.signOut().then(() => {
+      this.router.navigateByUrl('');
+    });
   }
 }

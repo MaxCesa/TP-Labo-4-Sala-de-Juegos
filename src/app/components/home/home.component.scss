@@ -1,0 +1,93 @@
+/* Estilo global */
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* Estilo del nav */
+nav {
+  background-color: #333;
+  width: 100%;
+  padding: 10px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+nav li {
+  display: inline-block;
+  padding: 10px 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #f4f4f9;
+  text-decoration: underline;
+}
+
+/* Estilo para el saludo de usuario */
+nav h1 {
+  color: #fff;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+/* Estilo para cuando el usuario no está logeado */
+nav h2 {
+  color: #bbb;
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+nav .noUser a {
+  margin-left: 10px;
+  color: #ff6f61;
+  font-weight: bold;
+}
+
+.noUser a:hover {
+  color: #ff3b28;
+}
+
+/* Sección en construcción */
+h2 {
+  color: #ff6f61;
+  font-size: 2rem;
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+  }
+
+  nav li {
+    padding: 10px 0;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
