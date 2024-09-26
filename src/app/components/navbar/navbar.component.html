@@ -1,0 +1,22 @@
+<nav id="navbar" class="navbar">
+    <ul>
+        <li>
+            <div *ngIf="userName; else noUser">
+                <h1>Bienvenido, {{ userName }}!</h1>
+                <a (click)="logOff()">Log-Out</a>
+            </div>
+        </li>
+        <li>
+            <ng-template #noUser>
+                <h2>No estas Logeado.</h2>
+                <a>LogIn</a>
+                <a>Registrarse</a>
+            </ng-template>
+        </li>
+        <li>
+            <a [routerLink]="['/quien-soy']">¿Quien Soy?</a>
+            <a [routerLink]="['/home']">Home</a>
+            <a [routerLink]="['/chat']">Chatroom</a>
+        </li>
+    </ul>
+</nav>

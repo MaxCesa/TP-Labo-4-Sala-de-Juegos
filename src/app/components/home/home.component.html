@@ -1,24 +1,24 @@
-<nav>
-    <ul>
-        <li>
-            <div *ngIf="userName; else noUser">
-                <h1>Bienvenido, {{ userName }}!</h1>
-                <a (click)="logOff()">Log-Out</a>
-            </div>
-        </li>
-        <li>
-            <ng-template #noUser>
-                <h2>No estas Logeado.</h2>
-                <a>LogIn</a>
-                <a>Registrarse</a>
-            </ng-template>
-        </li>
-        <li>
-            <a (click)="toQuienSoy()">¿Quien Soy?</a>
-        </li>
-    </ul>
-</nav>
-
-
-
-<h2>Bajo construccion</h2>
+<div class="juegos">
+    <div id="wrapper">
+        <section>
+            <ul id="gallery">
+                <li>
+                    <a [routerLink]="['/juegos/ahorcado']">
+                        <p>Ahorcado</p>
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="['/juegos/mayoromenor']">
+                        <p>Mayor Menor</p>
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="['/juegos/preguntados']">
+                        <p>Preguntados</p>
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </div>
+    <router-outlet></router-outlet>
+</div>

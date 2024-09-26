@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Ahorcado!!</title>
+  <link rel="stylesheet" href="ahorcado.component.scss">
+  <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch" rel="stylesheet">
+</head>
+
+<body>
+  <h1>Ahorcado</h1>
+
+  <svg viewBox="0 0 225 250">
+    <line class="gallows" x1="2" x2="210" y1="9" y2="9" />
+    <line class="gallows" x1="20" x2="20" y1="245" y2="9" />
+    <line class="gallows" x1="50" x2="20" y1="9" y2="40" />
+    <circle id="head" cx="115" cy="67" r="25" fill="none" />
+    <line id="body" x1="115" x2="115" y1="173" y2="93" />
+    <line id="left-arm" x1="115" x2="75" y1="116" y2="105" />
+    <line id="right-arm" x1="115" x2="155" y1="116" y2="105" />
+    <line id="left-leg" x1="115" x2="85" y1="173" y2="220" />
+    <line id="right-leg" x1="145" x2="115" y1="220" y2="173" />
+  </svg>
+
+  <div id="guessing"></div>
+
+  <div id="keypad">
+    <div id=keypad--row1>
+      <button (click)="verifyGuess('q')">Q</button>
+      <button (click)="verifyGuess('w')">W</button>
+      <button (click)="verifyGuess('e')">E</button>
+      <button (click)="verifyGuess('r')">R</button>
+      <button (click)="verifyGuess('t')">T</button>
+      <button (click)="verifyGuess('y')">Y</button>
+      <button (click)="verifyGuess('u')">U</button>
+      <button (click)="verifyGuess('i')">I</button>
+      <button (click)="verifyGuess('o')">O</button>
+      <button (click)="verifyGuess('p')">P</button>
+    </div>
+    <div id=keypad--row2>
+      <button (click)="verifyGuess('a')">A</button>
+      <button (click)="verifyGuess('s')">S</button>
+      <button (click)="verifyGuess('d')">D</button>
+      <button (click)="verifyGuess('f')">F</button>
+      <button (click)="verifyGuess('g')">G</button>
+      <button (click)="verifyGuess('h')">H</button>
+      <button (click)="verifyGuess('j')">J</button>
+      <button (click)="verifyGuess('k')">K</button>
+      <button (click)="verifyGuess('l')">L</button>
+    </div>
+    <div id=keypad--row3>
+      <button (click)="verifyGuess('z')">Z</button>
+      <button (click)="verifyGuess('x')">X</button>
+      <button (click)="verifyGuess('c')">C</button>
+      <button (click)="verifyGuess('v')">V</button>
+      <button (click)="verifyGuess('b')">B</button>
+      <button (click)="verifyGuess('n')">N</button>
+      <button (click)="verifyGuess('m')">M</button>
+    </div>
+  </div>
+
+  <h2 id="new-game" (click)="newGame()"><a>Juego Nuevo</a></h2><br>
+  <h4>Victorias consecutivas: {{wins}}</h4>
+
+</body>
+
+<script src="script.js"></script>
+
+</html>

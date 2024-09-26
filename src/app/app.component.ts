@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { AngularFireModule } from '@angular/fire/compat';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
-import { firebaseConfig } from '../enviroments/enviroments';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, NavbarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
+  template: '<app-navbar></app-navbar><router-outlet></router-outlet>',
 })
 export class AppComponent {
   title = 'TP-Sala-De-Juegos';
