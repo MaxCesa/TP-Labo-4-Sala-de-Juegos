@@ -1,24 +1,16 @@
-<div class="juegos">
-    <div id="wrapper">
-        <section>
-            <ul id="gallery">
-                <li>
-                    <a [routerLink]="['/juegos/ahorcado']">
-                        <p>Ahorcado</p>
-                    </a>
-                </li>
-                <li>
-                    <a [routerLink]="['/juegos/mayoromenor']">
-                        <p>Mayor Menor</p>
-                    </a>
-                </li>
-                <li>
-                    <a [routerLink]="['/juegos/preguntados']">
-                        <p>Preguntados</p>
-                    </a>
-                </li>
-            </ul>
-        </section>
+<div class="home">
+    <div class="square-container">
+        <a [routerLink]="['/juegos/ahorcado']" class="square-link">
+            <img src="hangman.png" alt="Ahorcado">
+        </a>
+        <a [routerLink]="['/juegos/mayoromenor']" class="square-link">
+            <img src="higherlower.png" alt="Mayor o menor">
+        </a>
+        <a class="square-link">
+            <img src="https://via.placeholder.com/100" alt="Placeholder Image 3">
+        </a>
+        <a class="square-link">
+            <img src="https://via.placeholder.com/100" alt="Placeholder Image 4">
+        </a>
     </div>
-    <router-outlet></router-outlet>
 </div>

@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import {
   Auth,
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
   selector: 'app-login',
   standalone: true,
   providers: [],
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
@@ -19,7 +20,10 @@ export class LoginComponent {
   constructor(private router: Router) {}
   private fireAuth = inject(Auth);
   private firestore = inject(Firestore);
+  errorLabel: string = '';
+  errorLogin: boolean = false;
   async login(email: any, pass: any) {
+    this.errorLogin = false;
     const user = await signInWithEmailAndPassword(
       this.fireAuth,
       email,
@@ -27,10 +31,11 @@ export class LoginComponent {
     ).catch(function (error) {});
     if (user) {
       localStorage.setItem('user', JSON.stringify(user.user?.email));
-      this.logLogin(user);
+      //this.logLogin(user);
       await this.router.navigateByUrl('/home');
     } else {
-      alert('Malas credenciales');
+      this.errorLabel = 'Correo o contraseña incorrectos.';
+      this.errorLogin = true;
     }
   }
 
@@ -51,5 +56,9 @@ export class LoginComponent {
 
   async toRegistro() {
     await this.router.navigateByUrl('/registro');
+  }
+
+  async toHome() {
+    await this.router.navigateByUrl('/home');
   }
 }

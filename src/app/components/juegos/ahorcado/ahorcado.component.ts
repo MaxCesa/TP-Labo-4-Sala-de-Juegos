@@ -1,16 +1,24 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {
+  Component,
+  ElementRef,
+  inject,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { collection, Firestore, addDoc } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-ahorcado',
   templateUrl: './ahorcado.component.html',
   standalone: true,
+  imports: [CommonModule],
   styleUrls: ['./ahorcado.component.scss'],
 })
 export class AhorcadoComponent implements OnInit {
   afs = inject(Firestore);
   constructor() {}
-
+  @ViewChild('keypad', { static: true }) keypad!: ElementRef;
   ngOnInit(): void {}
 
   //--------------------------------------------------------------------------------------------------
@@ -23,6 +31,7 @@ export class AhorcadoComponent implements OnInit {
   maskedAnswer: any;
   wrongGuesses: any;
   masthead = document.querySelector('h1');
+  labelState: string = 'hidden';
 
   commonWords = [
     'jirafa',
@@ -46,6 +55,8 @@ export class AhorcadoComponent implements OnInit {
     if (this.gameInProcess == true) {
       this.aborted();
     }
+    this.labelState = 'hidden';
+    this.enableAllButtons();
     this.gameInProcess = true;
     this.answer = this.newRandomWord();
     this.wrongGuesses = 0;
@@ -55,13 +66,24 @@ export class AhorcadoComponent implements OnInit {
     this.hang();
   }
 
+  enableAllButtons() {
+    // Find all buttons inside the container with id 'keypad'
+    const buttons = this.keypad.nativeElement.querySelectorAll('button');
+
+    // Loop through the buttons and disable them
+    buttons.forEach((button: HTMLButtonElement) => {
+      button.disabled = false;
+    });
+  }
+
   newRandomWord() {
     return this.commonWords[
       Math.floor(Math.random() * this.commonWords.length)
     ];
   }
 
-  verifyGuess(letter: string) {
+  verifyGuess(letter: string, btn: HTMLButtonElement) {
+    btn.disabled = true;
     if (String(this.answer).toLowerCase().includes(letter)) {
       for (var i in this.maskedAnswer) {
         if (this.answer[i] == letter) this.maskedAnswer[i] = this.answer[i];
@@ -121,7 +143,7 @@ export class AhorcadoComponent implements OnInit {
   hanged() {
     //lost
     this.gameInProcess = false;
-    alert('Fallaste! La respuesta correcta era: ' + this.answer);
+    this.labelState = 'lose';
     this.wins = 0;
     this.unhideAll('.losses');
     var display = '';
@@ -143,7 +165,6 @@ export class AhorcadoComponent implements OnInit {
   escaped() {
     //won
     this.gameInProcess = false;
-    alert('Felicitaciones, ganaste!!');
     this.wins++;
     this.newGame();
   }

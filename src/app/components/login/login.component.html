@@ -3,10 +3,11 @@
         <h1>Iniciar Sesion</h1>
         <input type="email" #userName class="formControl" placeholder="Email" required />
         <input type="password" #userPassword class="formControl" placeholder="Password" />
+        <ng-template [ngIf]="errorLogin"><label class="errorLabel">{{errorLabel}}</label></ng-template>
         <button (click)="login( userName.value, userPassword.value )">Iniciar</button>
         <div class="inicioRapido">
             <button (click)="userName.value = 'prueba@gmail.com'; userPassword.value = '123456';">Inicio 1</button>
-            <button (click)="userName.value = 'asd@asd.com'; userPassword.value = '123456';">Inicio 2</button>
+            <button (click)="toHome()">Invitado</button>
             <button (click)="userName.value = 'admin@gmail.com'; userPassword.value = '123456';">Inicio Admin</button>
         </div>
     </div>

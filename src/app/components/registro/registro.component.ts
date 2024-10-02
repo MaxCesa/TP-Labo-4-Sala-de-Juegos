@@ -1,30 +1,30 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { FirebaseError } from 'firebase/app';
 
 @Component({
   selector: 'app-registro',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink, RouterLinkActive],
   templateUrl: './registro.component.html',
   styleUrl: './registro.component.scss',
 })
 export class RegistroComponent {
   private fireAuth = inject(Auth);
   constructor(private router: Router) {}
-
-  pswdDontMatch: boolean = false;
-  mailAlreadyRegistered: boolean = false;
+  errorRegistering: boolean = false;
+  errorLabel: string = '';
 
   ngOnInit(): void {}
 
   async register(email: any, pass: any, confirm: any) {
+    this.errorRegistering = false;
     if (pass !== confirm) {
-      this.pswdDontMatch = true;
+      this.errorLabel = 'Las contraseñas no coinciden.';
+      this.errorRegistering = true;
     } else {
-      this.pswdDontMatch = false;
       try {
         const user = await createUserWithEmailAndPassword(
           this.fireAuth,
@@ -35,14 +35,24 @@ export class RegistroComponent {
           this.router.navigateByUrl('/home');
         }
       } catch (error: any) {
-        if (
-          error instanceof FirebaseError &&
-          error.code === 'auth/email-already-in-use'
-        ) {
-          this.mailAlreadyRegistered = true;
+        if (error instanceof FirebaseError) {
+          switch (error.code) {
+            case 'auth/email-already-in-use':
+              this.errorLabel = 'Este correo electronico ya esta registrado.';
+              break;
+            case 'auth/weak-password':
+              this.errorLabel =
+                'La contraseña es muy debil. Usa mas de 6 caracteres.';
+              break;
+            default:
+              this.errorLabel =
+                'Error registrandose. Pruebe de nuevo mas tarde.';
+              break;
+          }
         } else {
-          console.error('Registration error:', error);
+          this.errorLabel = 'Error registrandose. Pruebe de nuevo mas tarde.';
         }
+        this.errorRegistering = true;
       }
     }
   }

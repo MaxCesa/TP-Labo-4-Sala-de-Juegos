@@ -1,11 +1,14 @@
-<div class="carta">
-  <div class="carta" [style.background]="'url(cartas.jpg)'" [style.width.px]="225" [style.height.px]="315"
-    [style.backgroundPosition]="'right ' + right + 'px bottom ' + bottom + 'px'">
+<body>
+  <h1>¿Mayor o menor?</h1>
+  <div class="tablero">
+    <div class="carta" [style.background]="'url(cartas.jpg)'" [style.width.px]="225" [style.height.px]="315"
+      [style.backgroundPosition]="'right ' + right + 'px bottom ' + bottom + 'px'">
+    </div>
   </div>
-</div>
-<div class="interfaz">
-  <Label>Indique si la proxima carta sera mayor o menor:</Label><br><button
-    (click)="apuestaMayor()">Mayor</button><button (click)="apuestaMenor()">Menor</button><br>
-  <Label>Total de Aciertos Seguidos: {{aciertos}}</Label>
-  <button (click)="cartaRandom()">Carta Random</button>
-</div>
+  <div class="interfaz">
+    <Label>Indique si la proxima carta sera mayor o menor:</Label><br><button
+      (click)="apuestaMayor()">Mayor</button><button (click)="apuestaMenor()">Menor</button><br>
+    <Label>Total de Aciertos Seguidos: {{aciertos}}</Label>
+    <button (click)="cartaRandom()">Carta Random</button>
+  </div>
+</body>

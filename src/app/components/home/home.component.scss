@@ -1,1 +1,34 @@
+/* Ensure the body takes up full height */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+/* Container for the square layout */
+.square-container {
+  padding-top: 30px;
+  padding-right: 30%;
+  padding-left: 30%;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 20px; /* Space between images */
+}
+
+/* Style for the <a> tags to make them flexible */
+.square-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Optional: Style for the images */
+.square-link img {
+  /* Adjust as needed */
+  height: 200px;
+  border-radius: 30px;
+}

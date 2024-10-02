@@ -26,42 +26,45 @@
 
   <div id="guessing"></div>
 
-  <div id="keypad">
+  <div #keypad id="keypad">
     <div id=keypad--row1>
-      <button (click)="verifyGuess('q')">Q</button>
-      <button (click)="verifyGuess('w')">W</button>
-      <button (click)="verifyGuess('e')">E</button>
-      <button (click)="verifyGuess('r')">R</button>
-      <button (click)="verifyGuess('t')">T</button>
-      <button (click)="verifyGuess('y')">Y</button>
-      <button (click)="verifyGuess('u')">U</button>
-      <button (click)="verifyGuess('i')">I</button>
-      <button (click)="verifyGuess('o')">O</button>
-      <button (click)="verifyGuess('p')">P</button>
+      <button #q (click)="verifyGuess('q', q)">Q</button>
+      <button #w (click)="verifyGuess('w', w)">W</button>
+      <button #e (click)="verifyGuess('e', e)">E</button>
+      <button #r (click)="verifyGuess('r', r)">R</button>
+      <button #t (click)="verifyGuess('t', t)">T</button>
+      <button #y (click)="verifyGuess('y', y)">Y</button>
+      <button #u (click)="verifyGuess('u', u)">U</button>
+      <button #i (click)="verifyGuess('i', i)">I</button>
+      <button #o (click)="verifyGuess('o', o)">O</button>
+      <button #p (click)="verifyGuess('p', p)">P</button>
     </div>
     <div id=keypad--row2>
-      <button (click)="verifyGuess('a')">A</button>
-      <button (click)="verifyGuess('s')">S</button>
-      <button (click)="verifyGuess('d')">D</button>
-      <button (click)="verifyGuess('f')">F</button>
-      <button (click)="verifyGuess('g')">G</button>
-      <button (click)="verifyGuess('h')">H</button>
-      <button (click)="verifyGuess('j')">J</button>
-      <button (click)="verifyGuess('k')">K</button>
-      <button (click)="verifyGuess('l')">L</button>
+      <button #a (click)="verifyGuess('a', a)">A</button>
+      <button #s (click)="verifyGuess('s', s)">S</button>
+      <button #d (click)="verifyGuess('d', d)">D</button>
+      <button #f (click)="verifyGuess('f', f)">F</button>
+      <button #g (click)="verifyGuess('g', g)">G</button>
+      <button #h (click)="verifyGuess('h', h)">H</button>
+      <button #j (click)="verifyGuess('j', j)">J</button>
+      <button #k (click)="verifyGuess('k', k)">K</button>
+      <button #l (click)="verifyGuess('l', l)">L</button>
     </div>
     <div id=keypad--row3>
-      <button (click)="verifyGuess('z')">Z</button>
-      <button (click)="verifyGuess('x')">X</button>
-      <button (click)="verifyGuess('c')">C</button>
-      <button (click)="verifyGuess('v')">V</button>
-      <button (click)="verifyGuess('b')">B</button>
-      <button (click)="verifyGuess('n')">N</button>
-      <button (click)="verifyGuess('m')">M</button>
+      <button #z (click)="verifyGuess('z', z)">Z</button>
+      <button #x (click)="verifyGuess('x', x)">X</button>
+      <button #c (click)="verifyGuess('c', c)">C</button>
+      <button #v (click)="verifyGuess('v', v)">V</button>
+      <button #b (click)="verifyGuess('b', b)">B</button>
+      <button #n (click)="verifyGuess('n', n)">N</button>
+      <button #m (click)="verifyGuess('m', m)">M</button>
     </div>
   </div>
 
   <h2 id="new-game" (click)="newGame()"><a>Juego Nuevo</a></h2><br>
+  <label *ngIf="labelState === 'hidden'" style="display: none;"></label>
+  <label *ngIf="labelState === 'lose'">Perdiste! La palabra era: {{ answer }}</label>
+
   <h4>Victorias consecutivas: {{wins}}</h4>
 
 </body>

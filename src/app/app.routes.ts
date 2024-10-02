@@ -9,7 +9,7 @@ import { ChatroomComponent } from './components/chatroom/chatroom.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'auth', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'quien-soy', component: QuienSoyComponent },
   { path: 'registro', component: RegistroComponent },

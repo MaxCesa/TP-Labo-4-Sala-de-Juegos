@@ -1,22 +1,36 @@
 <nav id="navbar" class="navbar">
-    <ul>
-        <li>
-            <div *ngIf="userName; else noUser">
-                <h1>Bienvenido, {{ userName }}!</h1>
-                <a (click)="logOff()">Log-Out</a>
+    <div class="userInfo">
+        <div *ngIf="userName; else noUser">
+            <h1>Bienvenido, {{ userName }}!</h1>
+            <a class="userButton" (click)="logOff()">Log-Out</a>
+        </div>
+        <ng-template #noUser>
+            <h2>No estas Logeado.</h2>
+            <a class="userButton" [routerLink]="['/auth']">LogIn</a>
+            <a class="userButton" [routerLink]="['/registro']">Registrarse</a>
+        </ng-template>
+    </div>
+    <div class="links">
+        <a class="link-wrapper" [routerLink]="['/quien-soy']">
+            <span class="fallback">¿Quien soy?</span>
+            <div class="img-wrapper">
+                <img class="normal" src="Quien soy_.png">
+                <img class="active" src="Quien soy_2.png">
             </div>
-        </li>
-        <li>
-            <ng-template #noUser>
-                <h2>No estas Logeado.</h2>
-                <a>LogIn</a>
-                <a>Registrarse</a>
-            </ng-template>
-        </li>
-        <li>
-            <a [routerLink]="['/quien-soy']">¿Quien Soy?</a>
-            <a [routerLink]="['/home']">Home</a>
-            <a [routerLink]="['/chat']">Chatroom</a>
-        </li>
-    </ul>
+        </a>
+        <a class="link-wrapper" [routerLink]="['/chat']">
+            <span class="fallback">Chatroom</span>
+            <div class="img-wrapper">
+                <img class="normal" src="Chatroom.png">
+                <img class="active" src="Chatroom2.png">
+            </div>
+        </a>
+        <a class="link-wrapper" [routerLink]="['/home']">
+            <span class="fallback">Home</span>
+            <div class="img-wrapper">
+                <img class="normal" src="Home.png">
+                <img class="active" src="Home2.png">
+            </div>
+        </a>
+    </div>
 </nav>

@@ -12,7 +12,7 @@ import { Router, RouterLink, RouterModule } from '@angular/router';
 })
 export class NavbarComponent {
   user: User | null;
-  userName: string;
+  userName: string | null;
   private auth = inject(Auth);
   constructor(private router: Router) {
     this.user = this.auth.currentUser;
@@ -23,13 +23,13 @@ export class NavbarComponent {
     onAuthStateChanged(this.auth, (user) => {
       this.user?.email
         ? (this.userName = this.user.email)
-        : (this.userName = 'Guest');
+        : (this.userName = null);
     });
   }
 
   async logOff() {
     await this.auth.signOut().then(() => {
-      this.router.navigateByUrl('');
+      this.router.navigate(['']);
     });
   }
 }

@@ -1,3 +1,12 @@
+body {
+  display: block; /* Make sure the component takes full space */
+  height: 100vh; /* Set height as needed */
+  background: url("../../../../assets/fondoPoker.jpg"); /* Adjust the path accordingly */
+  background-size: cover; /* Cover the entire component */
+  background-position: top; /* Center the image */
+  padding-top: 40px;
+}
+
 element.syle {
   background-position-x: 225px;
   background-position-y: 315px;
@@ -7,17 +16,31 @@ element.syle {
   display: flex;
   align-items: center;
   flex-direction: column;
-  color: white;
+  color: gold;
 }
 
 .interfaz label {
-  color: black;
+  color: gold;
 }
 
-.carta {
+.tablero {
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+
+.carta {
+  border-style: ridge;
+  border-color: black;
+  border-width: 8px;
+}
+
+h1 {
+  font-family: "Great Vibes";
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: gold;
 }
 
 /* .carta
