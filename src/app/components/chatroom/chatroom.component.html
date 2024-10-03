@@ -1,9 +1,15 @@
-<div class="chat-container">
-    <div class="messages">
-        <div *ngFor="let message of messages">
-            <strong>{{ message.sender }}:</strong> {{ message.content }}
+<body>
+
+    <div class="chat-container">
+        <div class="messages">
+            <div *ngFor="let message of messages">
+                <div class="mensaje">
+                    <strong>{{ message.sender }}:</strong> {{ message.content }}
+                    <p>Enviado: {{message.timestamp.toDate() | date: 'short'}}</p>
+                </div>
+            </div>
         </div>
+        <input [(ngModel)]="newMessage" placeholder="Escribi tu mensaje..." />
+        <button (click)="sendMessage()">Enviar</button>
     </div>
-    <input [(ngModel)]="newMessage" placeholder="Escribi tu mensaje..." />
-    <button (click)="sendMessage()">Enviar</button>
-</div>
+</body>

@@ -49,6 +49,22 @@ export class AhorcadoComponent implements OnInit {
     'zorro',
     'botella',
     'persona',
+    'hormiga',
+    'tejer',
+    'transplante',
+    'percha',
+    'sorpresa',
+    'adulto',
+    'koala',
+    'gobierno',
+    'trenza',
+    'tumba',
+    'tanga',
+    'gracias',
+    'cabina',
+    'escritor',
+    'pintor',
+    'muletas',
   ];
 
   newGame() {

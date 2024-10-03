@@ -55,7 +55,7 @@ export class MayormenorComponent implements OnInit {
     }
     this.right = 225 * (cartaAzar % 13);
     this.numeroAnterior = cartaAzar % 13;
-    this.bottom = Math.trunc(cartaAzar / 13) * 315;
+    cartaAzar % 13 == this.numeroAnterior;
   }
 
   perdio() {

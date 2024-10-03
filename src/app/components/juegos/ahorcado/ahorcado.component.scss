@@ -1,12 +1,4 @@
 html {
-  text-align: center;
-  background-image: url("../../../../assets/pizarrron.jpg");
-  background-position: center;
-  background-size: cover;
-  font-size: 1vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 @media (max-width: 66vh) {
@@ -26,6 +18,11 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  text-align: center;
+  background-image: url("../../../../../public/pizarrron.jpg");
+  background-position: center;
+  background-size: cover;
+  font-size: 1vh;
 }
 
 @media (max-width: 100vh) {

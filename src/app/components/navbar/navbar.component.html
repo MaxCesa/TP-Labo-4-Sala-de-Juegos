@@ -6,8 +6,10 @@
         </div>
         <ng-template #noUser>
             <h2>No estas Logeado.</h2>
-            <a class="userButton" [routerLink]="['/auth']">LogIn</a>
-            <a class="userButton" [routerLink]="['/registro']">Registrarse</a>
+            <div class="authButtons">
+                <label class="userButton" [routerLink]="['/auth']">LogIn</label>
+                <label class="userButton" [routerLink]="['/registro']">Registrarse</label>
+            </div>
         </ng-template>
     </div>
     <div class="links">

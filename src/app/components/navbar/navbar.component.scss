@@ -114,6 +114,7 @@ hr {
   top: 0;
   width: 100%;
 }
+
 .userInfo {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   color: white;
@@ -125,6 +126,11 @@ nav h2 {
   color: #ffffff;
   margin: 0;
   font-size: 1.2rem;
+}
+
+.authButtons label {
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 nav .noUser a {

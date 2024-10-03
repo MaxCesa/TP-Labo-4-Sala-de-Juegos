@@ -6,6 +6,8 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { AhorcadoComponent } from './components/juegos/ahorcado/ahorcado.component';
 import { MayormenorComponent } from './components/juegos/mayormenor/mayormenor.component';
 import { ChatroomComponent } from './components/chatroom/chatroom.component';
+import { Preguntados2Component } from './components/juegos/preguntados2/preguntados2.component';
+import { TetrisComponent } from './components/juegos/tetris/tetris.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -16,4 +18,6 @@ export const routes: Routes = [
   { path: 'chat', component: ChatroomComponent },
   { path: 'juegos/ahorcado', component: AhorcadoComponent },
   { path: 'juegos/mayoromenor', component: MayormenorComponent },
+  { path: 'juegos/preguntados2', component: Preguntados2Component },
+  { path: 'juegos/tetris', component: TetrisComponent },
 ];
