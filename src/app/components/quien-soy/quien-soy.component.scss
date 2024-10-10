@@ -1,7 +1,15 @@
+body {
+  background-image: url("../../../../public/star_pattern.webp");
+  background-size: cover;
+}
+
 .quien-soy {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: white;
+  position: relative;
+  top: -10%;
 }
 
 #links {
@@ -16,6 +24,8 @@
 #links a {
   text-decoration: none;
   display: inline-block;
+  background-color: white;
+  border-radius: 40%;
 }
 
 img {
@@ -23,5 +33,22 @@ img {
   margin: 0 auto;
   border-width: 2px;
   border-style: solid;
-  border-color: black;
+  border-color: white;
+}
+
+#descripcion-juego {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+#descripcion-juego h3 {
+  text-align: center;
+}
+
+#nombre {
+  font-family: "Lucida Handwriting";
 }

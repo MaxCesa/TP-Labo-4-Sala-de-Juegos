@@ -1,0 +1,112 @@
+<div class="leaderboard-container">
+    <!-- Tabs for different games -->
+    <ul class="nav nav-tabs" id="gameTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="mayorMenor-tab" data-bs-toggle="tab" href="#mayorMenor" role="tab"
+                aria-controls="mayorMenor" aria-selected="true">
+                Mayor Menor
+            </a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="preguntados-tab" data-bs-toggle="tab" href="#preguntados" role="tab"
+                aria-controls="preguntados" aria-selected="false">
+                Preguntados
+            </a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="buscaminas-tab" data-bs-toggle="tab" href="#buscaminas" role="tab"
+                aria-controls="buscaminas" aria-selected="false">
+                buscaminas
+            </a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="ahorcado-tab" data-bs-toggle="tab" href="#ahorcado" role="tab"
+                aria-controls="ahorcado" aria-selected="false">
+                Ahorcado
+            </a>
+        </li>
+    </ul>
+
+    <!-- Tab content -->
+    <div class="tab-content" id="gameTabsContent">
+        <!-- Mayor Menor leaderboard -->
+        <div class="tab-pane fade show active" id="mayorMenor" role="tabpanel" aria-labelledby="mayorMenor-tab">
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Position</th>
+                        <th scope="col">nombre</th>
+                        <th scope="col">puntaje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let player of mayorMenorLeaderboard; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ player.nombre }}</td>
+                        <td>{{ player.puntaje }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Preguntados leaderboard -->
+        <div class="tab-pane fade" id="preguntados" role="tabpanel" aria-labelledby="preguntados-tab">
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Position</th>
+                        <th scope="col">nombre</th>
+                        <th scope="col">puntaje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let player of preguntadosLeaderboard; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ player.nombre }}</td>
+                        <td>{{ player.puntaje }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- buscaminas leaderboard -->
+        <div class="tab-pane fade" id="buscaminas" role="tabpanel" aria-labelledby="buscaminas-tab">
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Position</th>
+                        <th scope="col">nombre</th>
+                        <th scope="col">puntaje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let player of buscaminasLeaderboard; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ player.nombre }}</td>
+                        <td>{{ player.puntaje }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Ahorcado leaderboard -->
+        <div class="tab-pane fade" id="ahorcado" role="tabpanel" aria-labelledby="ahorcado-tab">
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Position</th>
+                        <th scope="col">nombre</th>
+                        <th scope="col">puntaje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let player of ahorcadoLeaderboard; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ player.nombre }}</td>
+                        <td>{{ player.puntaje }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

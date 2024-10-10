@@ -6,9 +6,11 @@
     </div>
   </div>
   <div class="interfaz">
-    <Label>Indique si la proxima carta sera mayor o menor:</Label><br><button
-      (click)="apuestaMayor()">Mayor</button><button (click)="apuestaMenor()">Menor</button><br>
+    <Label>Indique si la proxima carta sera mayor o menor:</Label><br>
+
+    <button id="mayor" (click)="apuestaMayor()">👆Mayor</button><button id="menor"
+      (click)="apuestaMenor()">Menor👇</button>
+
     <Label>Total de Aciertos Seguidos: {{aciertos}}</Label>
-    <button (click)="cartaRandom()">Carta Random</button>
   </div>
 </body>

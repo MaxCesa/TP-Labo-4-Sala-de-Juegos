@@ -1,0 +1,42 @@
+body {
+  background-image: url("../../../../../public/bombs-publicdomainvectors.png");
+  background-size: cover;
+}
+
+.fila {
+  display: flex;
+}
+
+.celda {
+  width: 30px;
+  height: 30px;
+}
+
+#juego {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  top: 15%;
+  position: relative;
+  flex-direction: column;
+}
+
+#setup {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  top: 20%;
+  position: relative;
+  font-family: "Bungee Hairline";
+}
+#setup h1 {
+  color: white;
+}
+
+#setup button {
+  margin: 20px;
+  height: 50px;
+  width: 110px;
+  font-family: monospace;
+}

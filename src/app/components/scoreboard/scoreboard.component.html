@@ -1,0 +1,92 @@
+<div class="leaderboard-container">
+    <!-- Custom Tabs -->
+    <div class="tabs">
+        <button class="tab-link active" (click)="showTab('mayorMenor')">Mayor Menor</button>
+        <button class="tab-link" (click)="showTab('preguntados')">Preguntados</button>
+        <button class="tab-link" (click)="showTab('buscaminas')">buscaminas</button>
+        <button class="tab-link" (click)="showTab('ahorcado')">Ahorcado</button>
+    </div>
+
+    <!-- Tab content -->
+    <div class="tab-content">
+        <!-- Mayor Menor leaderboard -->
+        <div id="mayorMenor" class="tab-pane active">
+            <table class="custom-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>nombre</th>
+                        <th>puntaje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let player of mayorMenorLeaderboard; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ player.nombre }}</td>
+                        <td>{{ player.puntaje }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Preguntados leaderboard -->
+        <div id="preguntados" class="tab-pane">
+            <table class="custom-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>nombre</th>
+                        <th>puntaje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let player of preguntadosLeaderboard; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ player.nombre }}</td>
+                        <td>{{ player.puntaje }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- buscaminas leaderboard -->
+        <div id="buscaminas" class="tab-pane">
+            <table class="custom-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>nombre</th>
+                        <th>puntaje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let player of buscaminasLeaderboard; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ player.nombre }}</td>
+                        <td>{{ player.puntaje }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Ahorcado leaderboard -->
+        <div id="ahorcado" class="tab-pane">
+            <table class="custom-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>nombre</th>
+                        <th>puntaje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let player of ahorcadoLeaderboard; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ player.nombre }}</td>
+                        <td>{{ player.puntaje }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -160,29 +160,26 @@ export class AhorcadoComponent implements OnInit {
     //lost
     this.gameInProcess = false;
     this.labelState = 'lose';
+    var puntajesAhorcado = collection(this.afs, 'puntajesAhorcado');
+    var nuevoPuntaje = {
+      nombre: localStorage.getItem('user'),
+      fecha: Date.now(),
+      puntaje: this.wins,
+    };
+    addDoc(puntajesAhorcado, nuevoPuntaje);
+
     this.wins = 0;
     this.unhideAll('.losses');
     var display = '';
     for (var i of this.answer) display += i + ' ';
     display.slice(0, -1);
     document.querySelector('#guessing')!.textContent = display;
-
-    var puntajesAhorcado = collection(this.afs, 'puntajesAhorcado');
-
-    var nuevoPuntaje = {
-      nombre: localStorage.getItem('user'),
-      fecha: Date.now(),
-      puntaje: this.wins,
-    };
-
-    addDoc(puntajesAhorcado, nuevoPuntaje);
   }
 
   escaped() {
     //won
     this.gameInProcess = false;
     this.wins++;
-    this.newGame();
   }
 
   resetKeypad() {

@@ -1,0 +1,41 @@
+body {
+  background-image: url("../../../../../public/world.jpg");
+  background-size: cover;
+}
+.banderas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: azure;
+}
+.banderas h2 {
+  background-color: #0a0d12;
+}
+.img {
+  margin: 20px;
+  width: 250px;
+}
+
+.perdiste {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.perdiste h1 {
+  color: rgba(210, 32, 32, 0.904);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  font-size: xx-large;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.perdiste button {
+  width: 200px;
+  font-size: large;
+  background-color: transparentize($color: #0a0d12, $amount: 0.1);
+  color: white;
+}

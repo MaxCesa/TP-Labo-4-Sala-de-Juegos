@@ -1,0 +1,20 @@
+<body>
+    <div class="banderas" *ngIf="!perdiste">
+        <h2>Cual de las siguientes es la bandera de {{bandera}}?</h2>
+        <div class="columna1">
+
+            <img class="img" [src]="opcion1.img" height="150" width="200" (click)="preguntaRespondida(0)">
+            <img class="img" [src]="opcion2.img" height="150" width="200" (click)="preguntaRespondida(1)">
+        </div>
+        <div class="columna2">
+
+            <img class="img" [src]="opcion3.img" height="150" width="200" (click)="preguntaRespondida(2)">
+            <img class="img" [src]="opcion4.img" height="150" width="200" (click)="preguntaRespondida(3)">
+        </div>
+        <h2>Puntaje: {{contadorCorrectas}}</h2>
+    </div>
+    <div class="perdiste" *ngIf="perdiste">
+        <H1>Perdiste. Tu puntuacion final es de {{contadorCorrectas}}</H1>
+        <button (click)="reiniciar()">Intentar de nuevo.</button>
+    </div>
+</body>

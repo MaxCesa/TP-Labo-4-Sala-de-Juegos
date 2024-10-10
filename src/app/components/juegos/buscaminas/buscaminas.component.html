@@ -1,0 +1,34 @@
+<body>
+
+    <link href='https://fonts.googleapis.com/css?family=Bungee Hairline' rel='stylesheet'>
+    <script type="module">
+        import canvasConfetti from 'https://cdn.skypack.dev/canvas-confetti';
+    </script>
+    <div id="setup" *ngIf="!empezoElJuego">
+        <h1>Buscaminas</h1>
+        <button (click)="generarCampo(8, 8, 10)">Principiante</button>
+        <button (click)="generarCampo(16, 16, 40)">Intermedio</button>
+        <button (click)="generarCampo(16, 30, 99)">Dificil</button>
+    </div>
+    <div id="juego" *ngIf="empezoElJuego">
+        <div id="info" *ngIf="!terminoElJuego">
+            <p>Minas restantes: {{cantidadMinas - celdasMarcadas}}</p>
+            <p>Tiempo: {{subscribeTimer}}</p>
+        </div>
+        <div id="campo" class="campo">
+            @for (fila of campo; let x = $index; track x) {
+            <div class="fila">
+                @for (celda of fila; let y = $index; track y) {
+                <button class="celda" [ngClass]="{'darken': celda.estaRevelada}" [disabled]="celda.estaRevelada"
+                    (click)="clickIzquierdo(x,y)" (contextmenu)="clickDerecho($event, x, y)">
+                    @if (celda.estaMarcada) {🚩} @else if (celda.estaRevelada){
+                    @if (celda.esMina ){💣} @else
+                    {{{celda.minasVecinas > 0 ? celda.minasVecinas : ""}}}}
+
+                </button>
+                }
+            </div>
+            }
+        </div>
+    </div>
+</body>

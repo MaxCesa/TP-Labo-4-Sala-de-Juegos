@@ -6,7 +6,7 @@ import {
   RouterLinkActive,
   NavigationEnd,
 } from '@angular/router';
-import { filter } from 'rxjs/operators'; // Required to filter NavigationEnd events
+import { filter } from 'rxjs/operators';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CommonModule } from '@angular/common';
 

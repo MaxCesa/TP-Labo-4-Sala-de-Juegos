@@ -1,0 +1,115 @@
+// Dark theme variables
+$background-color: #1c1c1c;
+$text-color: #ffffff;
+$primary-color: #ff4d4f;
+$error-color: #ff4d4f;
+$input-bg-color: #333333;
+$input-border-color: #555555;
+$input-text-color: #ffffff;
+$button-bg-color: $primary-color;
+$button-hover-color: darken($primary-color, 10%);
+$navbar-bg-color: #141414;
+
+body {
+  background-color: $background-color;
+  color: $text-color;
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  background-color: $navbar-bg-color;
+  color: $text-color;
+}
+
+// Container styling
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid $primary-color; // Add a nice border
+  border-radius: 10px; // Smooth the edges
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-left: 30%;
+  margin-right: 30%;
+  margin-top: 2%;
+  background-color: #424242;
+  font-size: larger;
+}
+
+.titulo {
+  font-size: x-large;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: $primary-color;
+}
+
+.rows {
+  margin-bottom: 20px;
+
+  .form-label {
+    color: $text-color;
+  }
+
+  .form-control {
+    background-color: $input-bg-color;
+    border-color: $input-border-color;
+    color: $input-text-color;
+    &:focus {
+      border-color: $primary-color;
+      box-shadow: none;
+    }
+  }
+
+  .invalid {
+    color: $error-color;
+    font-size: 0.9rem;
+  }
+
+  .form-select {
+    background-color: $input-bg-color;
+    border-color: $input-border-color;
+    color: $input-text-color;
+    &:focus {
+      border-color: $primary-color;
+      box-shadow: none;
+    }
+  }
+}
+
+// Button styling
+button {
+  background-color: $button-bg-color;
+  color: $text-color;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+
+  &:hover {
+    background-color: $button-hover-color;
+  }
+
+  &:disabled {
+    background-color: darken($button-bg-color, 20%);
+    cursor: not-allowed;
+  }
+}
+
+// Submit button
+.btn-primary {
+  width: 100%;
+}
+
+// Center the form horizontally
+.container .row {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}

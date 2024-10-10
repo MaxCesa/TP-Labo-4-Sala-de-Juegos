@@ -7,6 +7,8 @@ import { AhorcadoComponent } from './components/juegos/ahorcado/ahorcado.compone
 import { MayormenorComponent } from './components/juegos/mayormenor/mayormenor.component';
 import { ChatroomComponent } from './components/chatroom/chatroom.component';
 import { Preguntados2Component } from './components/juegos/preguntados2/preguntados2.component';
+import { BuscaminasComponent } from './components/juegos/buscaminas/buscaminas.component';
+import { EncuestaComponent } from './components/encuesta/encuesta.component';
 import { TetrisComponent } from './components/juegos/tetris/tetris.component';
 
 export const routes: Routes = [
@@ -16,8 +18,40 @@ export const routes: Routes = [
   { path: 'quien-soy', component: QuienSoyComponent },
   { path: 'registro', component: RegistroComponent },
   { path: 'chat', component: ChatroomComponent },
-  { path: 'juegos/ahorcado', component: AhorcadoComponent },
-  { path: 'juegos/mayoromenor', component: MayormenorComponent },
-  { path: 'juegos/preguntados2', component: Preguntados2Component },
-  { path: 'juegos/tetris', component: TetrisComponent },
+  {
+    path: 'juegos/ahorcado',
+    loadComponent: () =>
+      import('./components/juegos/ahorcado/ahorcado.component').then(
+        (m) => m.AhorcadoComponent
+      ),
+  },
+  {
+    path: 'juegos/mayoromenor',
+    loadComponent: () =>
+      import('./components/juegos/mayormenor/mayormenor.component').then(
+        (m) => m.MayormenorComponent
+      ),
+  },
+  {
+    path: 'juegos/preguntados',
+    loadComponent: () =>
+      import('./components/juegos/preguntados/preguntados.component').then(
+        (m) => m.PreguntadosComponent
+      ),
+  },
+  {
+    path: 'juegos/buscaminas',
+    loadComponent: () =>
+      import('./components/juegos/buscaminas/buscaminas.component').then(
+        (m) => m.BuscaminasComponent
+      ),
+  },
+  { path: 'encuesta', component: EncuestaComponent },
+  {
+    path: 'puntuacion',
+    loadComponent: () =>
+      import('./components/scoreboard/scoreboard.component').then(
+        (m) => m.ScoreboardComponent
+      ),
+  },
 ];

@@ -17,6 +17,23 @@ element.syle {
   align-items: center;
   flex-direction: column;
   color: gold;
+  text-align: center;
+}
+
+.interfaz button {
+  width: 100px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: large;
+  margin-bottom: 15px;
+}
+
+#mayor {
+  background-color: rgb(164, 211, 93);
+}
+
+#menor {
+  background-color: rgb(62, 118, 164);
 }
 
 .interfaz label {

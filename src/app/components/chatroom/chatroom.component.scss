@@ -29,6 +29,7 @@ body {
   border-bottom: 1px solid #ccc;
   margin-bottom: 10px;
   overflow: auto;
+  scroll-margin-block-start: initial;
 }
 
 .mensaje {
