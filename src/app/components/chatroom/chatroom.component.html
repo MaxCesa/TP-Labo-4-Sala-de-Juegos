@@ -1,10 +1,10 @@
 <body>
-
     <div class="chat-container">
         <div class="messages">
             <div *ngFor="let message of messages">
-                <div class="mensaje">
-                    <strong>{{ message.sender }}:</strong> {{ message.content }}
+                <div class="mensaje"
+                    [ngClass]="{'current-user': message.sender === currentUser, 'other-user': message.sender !== currentUser}">
+                    <strong *ngIf="message.sender !== currentUser">{{ message.sender }}:</strong> {{ message.content }}
                     <p>Enviado: {{message.timestamp.toDate() | date: 'short'}}</p>
                 </div>
             </div>

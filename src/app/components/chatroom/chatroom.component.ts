@@ -14,6 +14,7 @@ export class ChatroomComponent implements OnInit {
   messages: Message[] = [];
   newMessage: string = '';
   sender: string = localStorage.getItem('user') || 'Guest';
+  currentUser: string = localStorage.getItem('user') || 'Desconocido';
 
   constructor(private chatService: ChatService) {}
 

@@ -6,6 +6,8 @@ import {
   FormGroup,
   Validators,
   ReactiveFormsModule,
+  ValidatorFn,
+  ValidationErrors,
 } from '@angular/forms';
 import { Encuesta } from '../../services/encuesta';
 import { MatDialog } from '@angular/material/dialog';
@@ -42,7 +44,7 @@ export class EncuestaComponent implements OnInit {
     this.forma = this.fb.group({
       nombre: ['', [Validators.required, this.spacesValidator]],
       apellido: ['', Validators.required],
-      edad: ['', [Validators.required, Validators.min(18), Validators.max(99)]],
+      edad: ['', [Validators.required, this.minimumAgeValidator()]],
       telefono: ['', [this.lengthValidator, Validators.required]],
       pregunta1: ['', Validators.required],
       pregunta2: ['', Validators.required],
@@ -58,6 +60,22 @@ export class EncuestaComponent implements OnInit {
       return length ? { okLength: true } : null;
     }
     return null;
+  }
+
+  private minimumAgeValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      console.log(control.value);
+      const birthdate = new Date(control.value);
+      const today = new Date();
+      const age = today.getFullYear() - birthdate.getFullYear();
+      const isOldEnough =
+        age > 18 ||
+        (age === 18 &&
+          today.getMonth() >= birthdate.getMonth() &&
+          today.getDate() >= birthdate.getDate());
+      console.log(isOldEnough);
+      return isOldEnough ? null : { underage: true };
+    };
   }
 
   ngOnInit(): void {

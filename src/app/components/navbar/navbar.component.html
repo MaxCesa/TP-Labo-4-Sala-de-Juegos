@@ -20,7 +20,7 @@
                 <img class="active" src="Puntuacion2.png">
             </div>
         </a>
-        <a class="link-wrapper" [routerLink]="['/encuesta']">
+        <a *ngIf="userName" class="link-wrapper" [routerLink]="['/encuesta']">
             <span class="fallback">Encuesta</span>
             <div class="img-wrapper">
                 <img class="normal" src="Encuesta.png">

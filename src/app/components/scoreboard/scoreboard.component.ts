@@ -11,7 +11,7 @@ import {
 import { Observable } from 'rxjs';
 
 interface Score {
-  fecha: string;
+  fecha: any;
   nombre: string;
   puntaje: number;
 }

@@ -60,13 +60,13 @@ label {
   font-size: x-large;
 }
 
-#keypad a {
-  font-size: 6.4rem;
+#keypad button {
+  font-size: 1rem;
   padding: 0.3rem 1rem;
   cursor: pointer;
 }
 
-#keypad a.finished {
+#keypad button.finished {
   cursor: default;
 }
 
@@ -109,11 +109,11 @@ span {
   margin-right: 4rem;
 }
 
-a:hover {
+button:hover {
   color: white;
 }
 
-a:active {
+button:active {
   position: relative;
   top: 2px;
 }

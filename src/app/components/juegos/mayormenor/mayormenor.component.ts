@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { collection, Firestore, addDoc } from '@angular/fire/firestore';
+import { Score } from '../../../services/score';
 
 @Component({
   selector: 'app-mayormenor',
@@ -59,16 +60,18 @@ export class MayormenorComponent implements OnInit {
   }
 
   perdio() {
-    var puntajesMayorMenor = collection(this.afs, 'puntajesMayorMenor');
+    if (this.aciertos > 0) {
+      var puntajesMayorMenor = collection(this.afs, 'puntajesMayorMenor');
 
-    var nuevoPuntaje = {
-      nombre: localStorage.getItem('user'),
-      fecha: Date.now(),
-      puntaje: this.aciertos,
-    };
+      var nuevoPuntaje: Score = {
+        nombre: localStorage.getItem('user') || 'Guest',
+        fecha: new Date(),
+        puntaje: this.aciertos,
+      };
 
-    addDoc(puntajesMayorMenor, nuevoPuntaje);
-
+      addDoc(puntajesMayorMenor, nuevoPuntaje);
+    }
+    alert('¡Perdiste! Tu racha fue de ' + this.aciertos.toString());
     this.aciertos = 0;
   }
 

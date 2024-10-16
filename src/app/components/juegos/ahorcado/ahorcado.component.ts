@@ -7,6 +7,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { collection, Firestore, addDoc } from '@angular/fire/firestore';
+import { Score } from '../../../services/score';
 
 @Component({
   selector: 'app-ahorcado',
@@ -128,26 +129,24 @@ export class AhorcadoComponent implements OnInit {
     switch (this.wrongGuesses) {
       case 0:
         this.hideAll('svg *');
-        break;
-      case 1:
         this.unhideAll('.gallows');
         break;
-      case 2:
+      case 1:
         this.unhide('#head');
         break;
-      case 3:
+      case 2:
         this.unhide('#body');
         break;
-      case 4:
+      case 3:
         this.unhide('#left-arm');
         break;
-      case 5:
+      case 4:
         this.unhide('#right-arm');
         break;
-      case 6:
+      case 5:
         this.unhide('#left-leg');
         break;
-      case 7:
+      case 6:
         this.unhide('#right-leg');
         this.hanged();
         break;
@@ -161,9 +160,9 @@ export class AhorcadoComponent implements OnInit {
     this.gameInProcess = false;
     this.labelState = 'lose';
     var puntajesAhorcado = collection(this.afs, 'puntajesAhorcado');
-    var nuevoPuntaje = {
-      nombre: localStorage.getItem('user'),
-      fecha: Date.now(),
+    var nuevoPuntaje: Score = {
+      nombre: localStorage.getItem('user') || 'Guest',
+      fecha: new Date(),
       puntaje: this.wins,
     };
     addDoc(puntajesAhorcado, nuevoPuntaje);

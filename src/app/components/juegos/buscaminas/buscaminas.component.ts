@@ -1,8 +1,15 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, inject, ViewChild } from '@angular/core';
-import { of, timer } from 'rxjs';
+import {
+  Component,
+  ElementRef,
+  inject,
+  Renderer2,
+  ViewChild,
+} from '@angular/core';
+import { of, Subscription, timer } from 'rxjs';
 import { collection, addDoc, Firestore } from '@angular/fire/firestore';
 import confetti from 'canvas-confetti';
+import { Score } from '../../../services/score';
 
 interface Coordenada {
   x: number;
@@ -44,9 +51,14 @@ export class BuscaminasComponent {
   public minasBienMarcadas: number = 0;
   public empezoElJuego: boolean = false;
   public subscribeTimer: number = 0;
+  private timerSubscription!: Subscription;
   public terminoElJuego: boolean = false;
   afs = inject(Firestore);
-  constructor() {}
+  perdiste: boolean = false;
+  @ViewChild('campo', { static: false })
+  container!: ElementRef;
+
+  constructor(private renderer: Renderer2) {}
 
   generarCampo(altura: number, anchura: number, cantidadDeMinas: number) {
     this.empezoElJuego = true;
@@ -92,7 +104,6 @@ export class BuscaminasComponent {
           nuevaY < this.ancho /*&&
             this.campo[nuevaX][nuevaY].minasVecinas >= 0*/
         ) {
-          console.log('Celda: %d %d. Celda vecina: ', x, y, nuevaX, nuevaY);
           this.campo[nuevaX][nuevaY].minasVecinas++;
         }
       }
@@ -103,9 +114,17 @@ export class BuscaminasComponent {
 
   observableTimer() {
     const source = timer(0, 1000);
-    const abc = source.subscribe(() => {
+    this.timerSubscription = source.subscribe(() => {
       this.subscribeTimer += 1;
     });
+  }
+
+  resetTimer() {
+    if (this.timerSubscription) {
+      this.timerSubscription.unsubscribe();
+    }
+    this.subscribeTimer = 0;
+    this.observableTimer();
   }
 
   clickIzquierdo(x: number, y: number) {
@@ -148,11 +167,6 @@ export class BuscaminasComponent {
   clickDerecho(event: any, x: number, y: number) {
     event.preventDefault();
     const celdaAux = this.campo[x][y];
-    console.log(
-      'Minas bien marcadas: %d - Celdas marcadas: %d',
-      this.minasBienMarcadas,
-      this.celdasMarcadas
-    );
     if (this.campo[x][y].estaMarcada) {
       this.celdasMarcadas--;
     } else {
@@ -175,26 +189,29 @@ export class BuscaminasComponent {
   }
 
   perder() {
+    this.perdiste = true;
     this.coordenadas.forEach((coordenada) => {
       this.campo[coordenada.x][coordenada.y].estaRevelada = true;
     });
   }
   ganar() {
-    confetti({
-      particleCount: 100,
-      spread: 70,
-      origin: { y: 0.6 },
-    });
+    if (!this.perdiste) {
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+      });
 
-    var puntajesBuscaminas = collection(this.afs, 'puntajesBuscaminas');
+      var puntajesBuscaminas = collection(this.afs, 'puntajesBuscaminas');
 
-    var nuevoPuntaje = {
-      nombre: localStorage.getItem('user'),
-      fecha: Date.now(),
-      puntaje: this.puntuacion(),
-    };
+      var nuevoPuntaje: Score = {
+        nombre: localStorage.getItem('user') || 'Guest',
+        fecha: new Date(),
+        puntaje: this.puntuacion(),
+      };
 
-    addDoc(puntajesBuscaminas, nuevoPuntaje);
+      addDoc(puntajesBuscaminas, nuevoPuntaje);
+    }
   }
 
   puntuacion() {
@@ -209,6 +226,24 @@ export class BuscaminasComponent {
         puntuacion = 3 * puntuacion;
         break;
     }
-    return puntuacion;
+    return parseInt(puntuacion.toFixed(2));
+  }
+
+  nuevoJuego() {
+    this.empezoElJuego = false;
+    const elements = document.querySelectorAll('.celda');
+
+    // Loop through the NodeList and remove each element from the DOM
+    elements.forEach((element) => {
+      this.renderer.removeChild(element.parentNode, element);
+    });
+    this.cantidadMinas = 0;
+    this.campo = [];
+    this.coordenadas = [];
+    this.celdasMarcadas = 0;
+    this.minasBienMarcadas = 0;
+    this.empezoElJuego = false;
+    this.timerSubscription.unsubscribe();
+    this.subscribeTimer = 0;
   }
 }

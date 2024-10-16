@@ -19,6 +19,7 @@ body {
   top: 15%;
   position: relative;
   flex-direction: column;
+  z-index: 2;
 }
 
 #setup {
@@ -39,4 +40,14 @@ body {
   height: 50px;
   width: 110px;
   font-family: monospace;
+}
+
+#info {
+  background-color: lightgray;
+  padding-left: 15px;
+  padding-right: 15px;
+  z-index: 0;
+  border-style: ridge;
+  border-width: 2px;
+  border-color: black;
 }

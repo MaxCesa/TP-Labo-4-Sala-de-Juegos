@@ -3,6 +3,7 @@ import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { CountriesAPIService } from '../../../services/countries-api.service';
 import { CommonModule } from '@angular/common';
+import { Score } from '../../../services/score';
 
 @Component({
   selector: 'app-preguntados',
@@ -94,15 +95,16 @@ export class PreguntadosComponent implements OnInit {
 
   perder() {
     this.perdiste = true;
-    var puntajesPreguntados = collection(this.afs, 'puntajesPreguntados');
+    if (this.contadorCorrectas > 0) {
+      var puntajesPreguntados = collection(this.afs, 'puntajesPreguntados');
 
-    var nuevoPuntaje = {
-      nombre: localStorage.getItem('user'),
-      fecha: Date.now(),
-      puntaje: this.contadorCorrectas,
-    };
-
-    addDoc(puntajesPreguntados, nuevoPuntaje);
+      var nuevoPuntaje: Score = {
+        nombre: localStorage.getItem('user') || 'Guest',
+        fecha: new Date(),
+        puntaje: this.contadorCorrectas,
+      };
+      addDoc(puntajesPreguntados, nuevoPuntaje);
+    }
   }
 
   reiniciar() {

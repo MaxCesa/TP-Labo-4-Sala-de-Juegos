@@ -27,14 +27,15 @@
         </small>
       </div>
       <div class="row">
-        <label for="edad" class="form-label">Edad</label>
-        <input type="number" class="form-control" id="edad" placeholder="Ingrese edad" formControlName="edad">
+        <label for="edad" class="form-label">Fecha de nacimiento</label>
+        <input type="date" class="form-control" id="edad" placeholder="Ingrese fecha de nacimiento"
+          formControlName="edad">
         <small class="invalid" *ngIf="forma.controls['edad'].errors?.['required'] &&
             forma.controls['edad'].touched">
           La edad es requerida
         </small>
         <small class="invalid" *ngIf="forma.controls['edad'].errors?.['min'] || 
-            forma.controls['edad'].errors?.['max'] &&
+            forma.controls['edad'].errors?.['underage'] &&
             forma.controls['edad'].touched">
           La edad debe ser de 18 a 99 años
         </small>
@@ -82,16 +83,22 @@
       </div>
       <div class="row">
         <label for="pregunta3" class="form-label">¿Recomendaria la web a un Amigo?</label>
-        <select class="form-select" id="pregunta3" formControlName="pregunta3">
-          <option value="">Seleccione uno</option>
-          <option value="Si">Si</option>
-          <option value="No">No</option>
-        </select>
+        <div id="pregunta3">
+          <div class="form-check">
+            <input type="radio" class="form-check-input" id="pregunta3Si" formControlName="pregunta3" value="Si">
+            <label class="form-check-label" for="pregunta3Si">Si</label>
+          </div>
+          <div class="form-check">
+            <input type="radio" class="form-check-input" id="pregunta3No" formControlName="pregunta3" value="No">
+            <label class="form-check-label" for="pregunta3No">No</label>
+          </div>
+        </div>
         <small class="invalid" *ngIf="forma.controls['pregunta3'].errors?.['required'] &&
-              forma.controls['pregunta3'].touched">
+        forma.controls['pregunta3'].touched">
           Esta respuesta es requerida
         </small>
       </div>
+
     </div>
     <div class="row">
       <button type="submit" class="btn btn-primary btn-block" [disabled]="forma.invalid && forma.controls">
