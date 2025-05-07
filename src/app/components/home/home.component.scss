@@ -1,6 +1,7 @@
 /* Ensure the body takes up full height */
 html,
 body {
+  background-image: "UnderConstruction.png";
   margin: 0;
   padding: 0;
   height: 100%;
@@ -31,4 +32,8 @@ body {
   /* Adjust as needed */
   height: 200px;
   border-radius: 30px;
+}
+
+img {
+  max-width: 100vw;
 }
