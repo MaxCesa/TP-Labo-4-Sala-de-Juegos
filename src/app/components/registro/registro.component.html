@@ -5,7 +5,8 @@
         <input type="password" #userPassword class="formControl" placeholder="Password" />
         <input type="password" #confirmPassword class="formControl" placeholder="Confirm Password" />
         <ng-template [ngIf]="errorRegistering"><label class="errorLabel">{{errorLabel}}</label></ng-template>
-        <button (click)="register(userName.value, userPassword.value, confirmPassword.value)">Registrarse</button>
+        <button id="register"
+            (click)="register(userName.value, userPassword.value, confirmPassword.value)">Registrarse</button>
     </div>
     <div class="overlay-container">
         <div class="overlay">

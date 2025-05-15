@@ -20,16 +20,18 @@ body {
   position: relative;
   flex-direction: column;
   z-index: 2;
+  gap: 20px;
 }
 
 #setup {
   align-items: center;
   display: flex;
   justify-content: center;
+  top: 10%;
   flex-direction: column;
-  top: 20%;
   position: relative;
   font-family: "Bungee Hairline";
+  font-size: xx-large;
 }
 #setup h1 {
   color: white;
@@ -50,4 +52,14 @@ body {
   border-style: ridge;
   border-width: 2px;
   border-color: black;
+}
+
+#ganaste {
+  font-size: 60px;
+  color: gold;
+}
+
+#perdiste {
+  font-size: 60px;
+  color: red;
 }

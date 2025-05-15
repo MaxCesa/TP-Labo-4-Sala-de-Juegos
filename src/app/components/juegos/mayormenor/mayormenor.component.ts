@@ -22,41 +22,63 @@ export class MayormenorComponent implements OnInit {
 
   ngOnInit(): void {
     var cartaAzar = Math.trunc(Math.random() * 52);
-    this.numeroAnterior = cartaAzar % 14;
-    this.right = 225 * (cartaAzar % 14);
-    this.bottom = Math.trunc(cartaAzar / 14) * 315;
+    this.numeroAnterior = cartaAzar % 13;
+    this.right = 225 * (cartaAzar % 13);
+    this.bottom = Math.trunc(cartaAzar / 13) * 315;
   }
 
   getSpriteStyle = function (id: number) {
-    var palo = Math.trunc(id / 14);
+    var palo = Math.trunc(id / 13);
     console.log(
-      'background-position: ' + 225 * (id % 14) + ' ' + palo * 315 + 'px;'
+      'background-position: ' + 225 * (id % 13) + ' ' + palo * 315 + 'px;'
     );
-    return 'background-position: ' + 225 * (id % 14) + ' ' + palo * 315 + 'px;';
+    return 'background-position: ' + 225 * (id % 13) + ' ' + palo * 315 + 'px;';
   };
 
   apuestaMayor() {
     var cartaAzar = Math.trunc(Math.random() * 52);
-    if (this.numeroAnterior <= cartaAzar % 14) {
+    var valorCarta = cartaAzar % 13;
+    if (valorCarta == 0) {
+      valorCarta = 13;
+    }
+    console.log(
+      'Anterior:',
+      this.numeroAnterior,
+      'Nueva:',
+      valorCarta,
+      'Seleccion: Mayor'
+    );
+    if (this.numeroAnterior <= valorCarta) {
       this.aciertos++;
     } else {
       this.perdio();
     }
-    this.numeroAnterior = cartaAzar % 14;
-    this.right = 225 * (cartaAzar % 14);
-    this.bottom = Math.trunc(cartaAzar / 14) * 315;
+    this.numeroAnterior = valorCarta;
+    this.right = 225 * valorCarta;
+    this.bottom = Math.trunc(cartaAzar / 13) * 315;
   }
 
   apuestaMenor() {
     var cartaAzar = Math.trunc(Math.random() * 52);
-    if (this.numeroAnterior >= cartaAzar % 14) {
+    var valorCarta = cartaAzar % 13;
+    if (valorCarta == 0) {
+      valorCarta = 13;
+    }
+    console.log(
+      'Anterior:',
+      this.numeroAnterior,
+      'Nueva:',
+      valorCarta,
+      'Seleccion: Menor'
+    );
+
+    if (this.numeroAnterior >= valorCarta) {
       this.aciertos++;
     } else {
       this.perdio();
     }
-    this.right = 225 * (cartaAzar % 14);
-    this.numeroAnterior = cartaAzar % 14;
-    cartaAzar % 14 == this.numeroAnterior;
+    this.right = 225 * valorCarta;
+    this.numeroAnterior = valorCarta;
   }
 
   perdio() {
@@ -80,8 +102,8 @@ export class MayormenorComponent implements OnInit {
       'carta'
     )[0] as HTMLDivElement;
     var cartaAzar = Math.trunc(Math.random() * 52);
-    this.right = 225 * (cartaAzar % 14);
-    this.bottom = Math.trunc(cartaAzar / 14) * 315;
-    this.numeroAnterior = cartaAzar % 14;
+    this.right = 225 * (cartaAzar % 13);
+    this.bottom = Math.trunc(cartaAzar / 13) * 315;
+    this.numeroAnterior = cartaAzar % 13;
   }
 }

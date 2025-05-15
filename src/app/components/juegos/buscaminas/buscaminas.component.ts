@@ -55,6 +55,7 @@ export class BuscaminasComponent {
   public terminoElJuego: boolean = false;
   afs = inject(Firestore);
   perdiste: boolean = false;
+  ganaste: boolean = false;
   @ViewChild('campo', { static: false })
   container!: ElementRef;
 
@@ -178,13 +179,13 @@ export class BuscaminasComponent {
     if (celdaAux.estaMarcada && celdaAux.esMina) {
       this.minasBienMarcadas--;
     }
+    this.campo[x][y].estaMarcada = !this.campo[x][y].estaMarcada;
+
     if (
       this.minasBienMarcadas == this.cantidadMinas &&
       this.celdasMarcadas == this.cantidadMinas
     ) {
       this.ganar();
-    } else {
-      this.campo[x][y].estaMarcada = !this.campo[x][y].estaMarcada;
     }
   }
 
@@ -196,6 +197,7 @@ export class BuscaminasComponent {
   }
   ganar() {
     if (!this.perdiste) {
+      this.ganaste = true;
       confetti({
         particleCount: 100,
         spread: 70,
@@ -232,8 +234,6 @@ export class BuscaminasComponent {
   nuevoJuego() {
     this.empezoElJuego = false;
     const elements = document.querySelectorAll('.celda');
-
-    // Loop through the NodeList and remove each element from the DOM
     elements.forEach((element) => {
       this.renderer.removeChild(element.parentNode, element);
     });
@@ -243,6 +243,7 @@ export class BuscaminasComponent {
     this.celdasMarcadas = 0;
     this.minasBienMarcadas = 0;
     this.empezoElJuego = false;
+    this.perdiste = false;
     this.timerSubscription.unsubscribe();
     this.subscribeTimer = 0;
   }
