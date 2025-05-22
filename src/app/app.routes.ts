@@ -3,8 +3,13 @@ import { LoginComponent } from './components/login/login.component';
 import { QuienSoyComponent } from './components/quien-soy/quien-soy.component';
 import { HomeComponent } from './components/home/home.component';
 import { RegistroComponent } from './components/registro/registro.component';
+import { AhorcadoComponent } from './components/juegos/ahorcado/ahorcado.component';
+import { MayormenorComponent } from './components/juegos/mayormenor/mayormenor.component';
 import { ChatroomComponent } from './components/chatroom/chatroom.component';
+import { Preguntados2Component } from './components/juegos/preguntados2/preguntados2.component';
+import { BuscaminasComponent } from './components/juegos/buscaminas/buscaminas.component';
 import { EncuestaComponent } from './components/encuesta/encuesta.component';
+import { TetrisComponent } from './components/juegos/tetris/tetris.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent },
