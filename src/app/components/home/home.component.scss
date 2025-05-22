@@ -2,10 +2,16 @@ html,
 body {
   margin: 0;
   padding: 0;
+  background-image: url("../../../../public/background.jpg");
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.home {
+  background-image: url("../../../../public/background.jpg");
+  height: 100%;
 }
 
 .square-container {

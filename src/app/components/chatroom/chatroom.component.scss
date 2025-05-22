@@ -1,85 +1,120 @@
-html,
 body {
-  height: 100%;
+  background-image: url("../../../../public/background.jpg");
   margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
   display: flex;
   justify-content: center;
-  background-color: #000000;
+  align-items: center;
+  height: 100vh;
 }
 
 .chat-container {
-  background-color: red;
-  width: 45%;
-  height: 600px;
-  border: 1px solid #ccc;
-  padding: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  margin-top: -10%;
+  width: 100%;
+  max-width: 600px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  padding: 1rem;
+  box-sizing: border-box;
+  height: 80vh;
 }
 
 .messages {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  padding-top: 38%;
-  height: 500px;
-  overflow-y: scroll;
-  border-bottom: 1px solid #ccc;
-  margin-bottom: 10px;
-  flex-grow: 1;
+  flex: 1;
   overflow-y: auto;
-  padding: 10px;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .mensaje {
-  padding: 20px;
-  background-blend-mode: overlay;
-  background-color: #000000;
-  border-radius: 30px;
-  border-style: solid;
-  border-color: black;
-  color: white;
-  margin: 15px 15px 15px 15px;
-  max-width: 60%; /* Maximum width set to 60% of the container */
-  width: fit-content; /* The width adjusts to the content */
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  max-width: 60%;
   word-wrap: break-word;
+  background-color: #e0e0e0;
+  align-self: flex-start;
+  position: relative;
 }
 
-.current-user {
-  background-color: #ffffff; /* Light green background */
+.mensaje.current-user {
+  background-color: #d1e7dd;
+  align-self: flex-end;
+  text-align: left;
+  margin-right: auto;
+}
+
+.mensaje.other-user {
+  background-color: #f8d7da;
   margin-left: auto;
   text-align: right;
-  color: black;
 }
 
-.other-user {
-  margin-right: auto;
-  text-align: left;
+.mensaje p {
+  margin: 0.3rem 0 0 0;
+  font-size: 0.75rem;
+  color: #666;
 }
 
-input {
-  width: auto;
-  padding: 10px;
-  margin-right: 10px;
+input[type="text"],
+input[ngModel] {
+  padding: 0.5rem;
   border: 1px solid #ccc;
-  border-radius: 4px;
-  outline: none;
-  flex-wrap: wrap;
+  border-radius: 20px;
+  width: calc(100% - 90px);
+  margin-right: 10px;
+  box-sizing: border-box;
 }
 
 button {
-  padding: 10px;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: #fff;
   border: none;
-  background-color: white;
-  color: black;
-  border-radius: 15px;
-  border-style: solid;
-  border-color: #000000;
-  border-width: 8px;
+  border-radius: 20px;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 button:hover {
-  background-color: red;
-  color: white;
+  background-color: #0056b3;
+}
+
+.chat-container input,
+.chat-container button {
+  display: inline-block;
+  vertical-align: middle;
+  align-items: end;
+}
+
+.input-area {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.input-area input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+
+.input-area button {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.input-area button:hover {
+  background-color: #0056b3;
 }

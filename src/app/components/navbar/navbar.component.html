@@ -4,7 +4,7 @@
             <h1>Bienvenido, {{ userName }}!</h1>
             <a class="userButton" (click)="logOff()">Log-Out</a>
         </div>
-        <ng-template #noUser>
+        <ng-template class="noUser" #noUser>
             <h2>No estas Logeado.</h2>
             <div class="authButtons">
                 <label class="userButton" [routerLink]="['/auth']">LogIn</label>
