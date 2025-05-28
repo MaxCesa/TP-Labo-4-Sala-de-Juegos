@@ -1,6 +1,8 @@
-body {
+.main-container {
   background-image: url("../../../../../public/bombs-publicdomainvectors.png");
   background-size: cover;
+  height: 100vh;
+  background-position: 10%;
 }
 
 .fila {
@@ -60,6 +62,7 @@ body {
 }
 
 #perdiste {
+  margin-top: 10px;
   font-size: 60px;
   color: red;
 }

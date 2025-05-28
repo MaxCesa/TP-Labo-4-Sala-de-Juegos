@@ -1,16 +1,19 @@
-<body>
+<div class="main-container">
   <h1>¿Mayor o menor?</h1>
   <div class="tablero">
     <div class="carta" [style.background]="'url(cartas.jpg)'" [style.width.px]="225" [style.height.px]="315"
       [style.backgroundPosition]="'right ' + right + 'px bottom ' + bottom + 'px'">
     </div>
   </div>
-  <div class="interfaz">
+  <div *ngIf="!perdiste" class="interfaz">
     <Label>Indique si la proxima carta sera mayor o menor:</Label><br>
-
     <button id="mayor" (click)="apuestaMayor()">👆Mayor</button><button id="menor"
       (click)="apuestaMenor()">Menor👇</button>
-
     <Label>Total de Aciertos Seguidos: {{aciertos}}</Label>
   </div>
-</body>
+  <div class="perdiste" *ngIf="perdiste">
+    <h1>Perdiste</h1>
+    <h2>Tu racha fue de {{this.aciertos.toString()}}</h2>
+    <button id="nuevoJuego" (click)="nuevoJuego()">Jugar de nuevo</button>
+  </div>
+</div>

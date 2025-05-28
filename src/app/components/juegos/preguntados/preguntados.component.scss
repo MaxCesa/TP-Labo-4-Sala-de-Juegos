@@ -1,6 +1,8 @@
-body {
+.main-container {
   background-image: url("../../../../../public/world.jpg");
   background-size: cover;
+  height: 100vh;
+  background-position: -10%;
 }
 .banderas {
   display: flex;

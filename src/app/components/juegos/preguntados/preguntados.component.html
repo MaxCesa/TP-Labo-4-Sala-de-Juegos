@@ -1,20 +1,22 @@
-<body>
+<div class="main-container">
     <div class="banderas" *ngIf="!perdiste">
         <h2>¿Cual de las siguientes es la bandera de {{bandera}}?</h2>
         <div class="columna1">
 
-            <img class="img" [src]="opcion1.img" height="150" width="200" (click)="preguntaRespondida(0)">
-            <img class="img" [src]="opcion2.img" height="150" width="200" (click)="preguntaRespondida(1)">
+            <img class="img" [src]="opcion[0].img" height="150" width="200" (click)="preguntaRespondida(0)">
+            <img class="img" [src]="opcion[1].img" height="150" width="200" (click)="preguntaRespondida(1)">
         </div>
         <div class="columna2">
 
-            <img class="img" [src]="opcion3.img" height="150" width="200" (click)="preguntaRespondida(2)">
-            <img class="img" [src]="opcion4.img" height="150" width="200" (click)="preguntaRespondida(3)">
+            <img class="img" [src]="opcion[2].img" height="150" width="200" (click)="preguntaRespondida(2)">
+            <img class="img" [src]="opcion[3].img" height="150" width="200" (click)="preguntaRespondida(3)">
         </div>
         <h2>Puntaje: {{contadorCorrectas}}</h2>
     </div>
     <div class="perdiste" *ngIf="perdiste">
-        <H1>Perdiste. Tu puntuacion final es de {{contadorCorrectas}}</H1>
+        <H1>Perdiste. La bandera de {{bandera}} es:</H1>
+        <img class="img" [src]="opcion[correcto].img" height="150" width="200">
+        <h1>Tu puntuacion final es de {{contadorCorrectas}} puntos.</h1>
         <button (click)="reiniciar()">Intentar de nuevo.</button>
     </div>
-</body>
+</div>

@@ -1,18 +1,16 @@
-<body>
-
-    <div class="chat-container">
-        <div class="messages">
-            <div *ngFor="let message of messages">
-                <div class="mensaje"
-                    [ngClass]="{'current-user': message.sender === currentUser, 'other-user': message.sender !== currentUser}">
-                    <strong *ngIf="message.sender !== currentUser">{{ message.sender }}:</strong> {{ message.content }}
-                    <p>Enviado: {{message.timestamp.toDate() | date: 'short'}}</p>
-                </div>
+<div class="chat-container">
+    <div class="messages">
+        <div *ngFor="let message of messages">
+            <div class="mensaje"
+                [ngClass]="{'current-user': message.sender === currentUser, 'other-user': message.sender !== currentUser}">
+                <strong *ngIf="message.sender !== currentUser">{{ message.sender }}:</strong> {{ message.content }}
+                <p>Enviado: {{ message.timestamp.toDate() | date: 'd/M/y, h:mm a' }}</p>
             </div>
         </div>
-        <div class="input-area">
-            <input id="text-input " [(ngModel)]="newMessage" placeholder="Escribí tu mensaje..." />
-            <button (click)="sendMessage()">Enviar</button>
-        </div>
     </div>
-</body>
+    <div class="input-area">
+        <input id="text-input" [(ngModel)]="newMessage" placeholder="Escribí tu mensaje..."
+            (keydown.enter)="sendMessage()" />
+        <button (click)="sendMessage()">Enviar</button>
+    </div>
+</div>

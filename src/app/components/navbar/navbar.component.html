@@ -1,7 +1,7 @@
 <nav id="navbar" class="navbar">
     <div class="userInfo">
         <div *ngIf="userName; else noUser">
-            <h1>Bienvenido, {{ userName }}!</h1>
+            <h1>Bienvenido, {{ userName }}</h1>
             <a class="userButton" (click)="logOff()">Log-Out</a>
         </div>
         <ng-template class="noUser" #noUser>

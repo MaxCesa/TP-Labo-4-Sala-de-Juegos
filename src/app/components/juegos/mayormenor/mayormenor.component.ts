@@ -17,6 +17,7 @@ export class MayormenorComponent implements OnInit {
   bottom: number = 0;
   aciertos: number = 0;
   numeroAnterior: number = 0;
+  perdiste = false;
   afs = inject(Firestore);
   constructor() {}
 
@@ -48,9 +49,9 @@ export class MayormenorComponent implements OnInit {
       valorCarta,
       'Seleccion: Mayor'
     );
-    if (this.numeroAnterior <= valorCarta) {
+    if (this.numeroAnterior < valorCarta) {
       this.aciertos++;
-    } else {
+    } else if (this.numeroAnterior > valorCarta) {
       this.perdio();
     }
     this.numeroAnterior = valorCarta;
@@ -72,9 +73,9 @@ export class MayormenorComponent implements OnInit {
       'Seleccion: Menor'
     );
 
-    if (this.numeroAnterior >= valorCarta) {
+    if (this.numeroAnterior > valorCarta) {
       this.aciertos++;
-    } else {
+    } else if (this.numeroAnterior < valorCarta) {
       this.perdio();
     }
     this.right = 225 * valorCarta;
@@ -82,6 +83,7 @@ export class MayormenorComponent implements OnInit {
   }
 
   perdio() {
+    this.perdiste = true;
     if (this.aciertos > 0) {
       var puntajesMayorMenor = collection(this.afs, 'puntajesMayorMenor');
 
@@ -93,8 +95,12 @@ export class MayormenorComponent implements OnInit {
 
       addDoc(puntajesMayorMenor, nuevoPuntaje);
     }
-    alert('¡Perdiste! Tu racha fue de ' + this.aciertos.toString());
+  }
+
+  nuevoJuego() {
+    this.cartaRandom();
     this.aciertos = 0;
+    this.perdiste = false;
   }
 
   cartaRandom() {

@@ -4,13 +4,16 @@
   }
 }
 
-body {
+.main-container {
   color: #cacaca;
   font-family: "Cabin Sketch", "Arial";
+  position: fixed;
+  bottom: 0;
   margin: 0;
   box-sizing: border-box;
   overflow: hidden;
-  height: 90vh;
+  height: 92vh;
+  row-gap: -50px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -23,6 +26,10 @@ body {
   font-size: 1vh;
 }
 
+#title {
+  padding-bottom: -20%;
+}
+
 @media (max-width: 100vh) {
   body {
     width: 100vw;
@@ -30,7 +37,7 @@ body {
 }
 
 svg {
-  height: 36vh;
+  height: 24vh;
 }
 
 @media (max-width: 40vh) {

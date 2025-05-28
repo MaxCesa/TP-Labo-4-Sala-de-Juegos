@@ -26,22 +26,12 @@ export class PreguntadosComponent implements OnInit {
     this.cargarPregunta();
   }
 
-  opcion1 = {
-    img: '',
-    nombre: '',
-  };
-  opcion2 = {
-    img: '',
-    nombre: '',
-  };
-  opcion3 = {
-    img: '',
-    nombre: '',
-  };
-  opcion4 = {
-    img: '',
-    nombre: '',
-  };
+  opcion = [
+    { img: '', nombre: '' },
+    { img: '', nombre: '' },
+    { img: '', nombre: '' },
+    { img: '', nombre: '' },
+  ];
 
   correcto: number = 0;
   misBanderas: any[] | undefined;
@@ -54,29 +44,35 @@ export class PreguntadosComponent implements OnInit {
     this.countries.todos().subscribe((t) => {
       var random = Math.floor(Math.random() * 200);
 
-      this.opcion1.img = t[random + 12].flags.png;
-      this.opcion1.nombre = t[random + 12].name.common;
-      this.opcion2.img = t[random + 7].flags.png;
-      this.opcion2.nombre = t[random + 7].name.common;
-      this.opcion3.img = t[random + 21].flags.png;
-      this.opcion3.nombre = t[random + 21].name.common;
-      this.opcion4.img = t[random + 32].flags.png;
-      this.opcion4.nombre = t[random + 32].name.common;
+      console.log(JSON.stringify(t[random + 12]));
+
+      this.opcion[0].img = t[random + 12].flags.png;
+      this.opcion[0].nombre = t[random + 12].translations.spa.common;
+      this.opcion[1].img = t[random + 7].flags.png;
+      this.opcion[1].nombre = t[random + 7].translations.spa.common;
+      this.opcion[2].img = t[random + 21].flags.png;
+      this.opcion[2].nombre = t[random + 21].translations.spa.common;
+      this.opcion[3].img = t[random + 32].flags.png;
+      this.opcion[3].nombre = t[random + 32].translations.spa.common;
+
+      this.opcion.forEach((flag) => {
+        console.log(flag.img);
+      });
 
       this.correcto = Math.floor(Math.random() * 4);
 
       switch (this.correcto) {
         case 0:
-          this.bandera = this.opcion1.nombre;
+          this.bandera = this.opcion[0].nombre;
           break;
         case 1:
-          this.bandera = this.opcion2.nombre;
+          this.bandera = this.opcion[1].nombre;
           break;
         case 2:
-          this.bandera = this.opcion3.nombre;
+          this.bandera = this.opcion[2].nombre;
           break;
         case 3:
-          this.bandera = this.opcion4.nombre;
+          this.bandera = this.opcion[3].nombre;
           break;
       }
 
@@ -87,10 +83,10 @@ export class PreguntadosComponent implements OnInit {
   preguntaRespondida(respuesta: number) {
     if (this.correcto == respuesta) {
       this.contadorCorrectas++;
+      this.cargarPregunta();
     } else {
       this.perder();
     }
-    this.cargarPregunta();
   }
 
   perder() {
@@ -110,6 +106,7 @@ export class PreguntadosComponent implements OnInit {
   reiniciar() {
     this.perdiste = false;
     this.contadorCorrectas = 0;
+    this.cargarPregunta();
   }
 
   buscarPais(nombre: string) {

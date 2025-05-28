@@ -6,10 +6,9 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { AhorcadoComponent } from './components/juegos/ahorcado/ahorcado.component';
 import { MayormenorComponent } from './components/juegos/mayormenor/mayormenor.component';
 import { ChatroomComponent } from './components/chatroom/chatroom.component';
-import { Preguntados2Component } from './components/juegos/preguntados2/preguntados2.component';
+import { PreguntadosComponent } from './components/juegos/preguntados/preguntados.component';
 import { BuscaminasComponent } from './components/juegos/buscaminas/buscaminas.component';
 import { EncuestaComponent } from './components/encuesta/encuesta.component';
-import { TetrisComponent } from './components/juegos/tetris/tetris.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -19,32 +18,9 @@ export const routes: Routes = [
   { path: 'registro', component: RegistroComponent },
   { path: 'chat', component: ChatroomComponent },
   {
-    path: 'juegos/ahorcado',
-    loadComponent: () =>
-      import('./components/juegos/ahorcado/ahorcado.component').then(
-        (m) => m.AhorcadoComponent
-      ),
-  },
-  {
-    path: 'juegos/mayoromenor',
-    loadComponent: () =>
-      import('./components/juegos/mayormenor/mayormenor.component').then(
-        (m) => m.MayormenorComponent
-      ),
-  },
-  {
-    path: 'juegos/preguntados',
-    loadComponent: () =>
-      import('./components/juegos/preguntados/preguntados.component').then(
-        (m) => m.PreguntadosComponent
-      ),
-  },
-  {
-    path: 'juegos/buscaminas',
-    loadComponent: () =>
-      import('./components/juegos/buscaminas/buscaminas.component').then(
-        (m) => m.BuscaminasComponent
-      ),
+    path: 'juegos',
+    loadChildren: () =>
+      import('./components/juegos/juegos.routes').then((m) => m.juegosRoutes),
   },
   { path: 'encuesta', component: EncuestaComponent },
   {
@@ -54,4 +30,5 @@ export const routes: Routes = [
         (m) => m.ScoreboardComponent
       ),
   },
+  { path: 'chat', component: ChatroomComponent },
 ];
