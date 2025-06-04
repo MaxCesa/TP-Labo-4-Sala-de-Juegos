@@ -1,117 +1,122 @@
-<div class="container">
-  <form [formGroup]="forma" (ngSubmit)="aceptar()">
-    <div class="row">
-      <div class="titulo">
-        <h2>Encuesta</h2>
-      </div>
-    </div>
-    <div class="rows">
+<div class="main-container">
+  <div class="container">
+    <form *ngIf="!encuestaSubida" [formGroup]="forma" (ngSubmit)="aceptar()">
       <div class="row">
-        <label for="nombre" class="form-label">Nombre</label>
-        <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombre" formControlName="nombre">
-        <small class="invalid" *ngIf="forma.controls['nombre'].errors?.['required'] &&
-            forma.controls['nombre'].touched">
-          El nombre es requerido
-        </small>
-        <small class="invalid" *ngIf="forma.controls['nombre'].errors?.['containsSpaces'] &&
-          forma.controls['nombre'].touched">
-          El nombre no puede contener espacios
-        </small>
-      </div>
-      <div class="row">
-        <label for="apellido" class="form-label">Apellido</label>
-        <input type="text" class="form-control" id="apellido" placeholder="Ingrese apellido" formControlName="apellido">
-        <small class="invalid" *ngIf="forma.controls['apellido'].errors?.['required'] &&
-            forma.controls['apellido'].touched">
-          El apellido es requerido
-        </small>
-      </div>
-      <div class="row">
-        <label for="edad" class="form-label">Fecha de nacimiento</label>
-        <input type="date" class="form-control" id="edad" placeholder="Ingrese fecha de nacimiento"
-          formControlName="edad">
-        <small class="invalid" *ngIf="forma.controls['edad'].errors?.['required'] &&
-            forma.controls['edad'].touched">
-          La edad es requerida
-        </small>
-        <small class="invalid" *ngIf="forma.controls['edad'].errors?.['min'] || 
-            forma.controls['edad'].errors?.['underage'] &&
-            forma.controls['edad'].touched">
-          La edad debe ser de 18 a 99 años
-        </small>
-      </div>
-      <div class="row">
-        <label for="telefono" class="form-label">Telefono</label>
-        <input type="number" class="form-control" id="telefono" placeholder="Ingrese telefono"
-          formControlName="telefono">
-        <small class="invalid" *ngIf="forma.controls['edad'].errors?.['required'] &&
-              forma.controls['edad'].touched">
-          El telefono es requerido
-        </small>
-        <small class="invalid" *ngIf="forma.controls['telefono'].errors?.['okLength'] &&
-              forma.controls['telefono'].touched">
-          El telefono debe tener 10 caracteres
-        </small>
-      </div>
-      <div class="row">
-        <label for="pregunta1" class="form-label">Elija su juego favorito:</label>
-        <select class="form-select" id="pregunta1" formControlName="pregunta1">
-          <option value="">Seleccione uno</option>
-          <option value="mayorMenor">Mayor Menor</option>
-          <option value="preguntados">Preguntados</option>
-          <option value="buscaminas">Buscaminas</option>
-          <option value="ahorcado">Ahorcado</option>
-        </select>
-        <small class="invalid" *ngIf="forma.controls['pregunta1'].errors?.['required'] &&
-            forma.controls['pregunta1'].touched">
-          Esta respuesta es requerida
-        </small>
-      </div>
-      <div class="row">
-        <label for="pregunta2" class="form-label">Elija su juego menos favorito:</label>
-        <select class="form-select" id="pregunta2" formControlName="pregunta2">
-          <option value="">Seleccione uno</option>
-          <option value="mayorMenor">Mayor Menor</option>
-          <option value="preguntados">Preguntados</option>
-          <option value="buscaminas">Buscaminas</option>
-          <option value="ahorcado">Ahorcado</option>
-        </select>
-        <small class="invalid" *ngIf="forma.controls['pregunta2'].errors?.['required'] &&
-              forma.controls['pregunta2'].touched">
-          Esta respuesta es requerida
-        </small>
-      </div>
-      <div class="row">
-        <label for="pregunta3" class="form-label">¿Recomendaria la web a un Amigo?</label>
-        <div id="pregunta3">
-          <div class="form-check">
-            <input type="radio" class="form-check-input" id="pregunta3Si" formControlName="pregunta3" value="Si">
-            <label class="form-check-label" for="pregunta3Si">Si</label>
-          </div>
-          <div class="form-check">
-            <input type="radio" class="form-check-input" id="pregunta3No" formControlName="pregunta3" value="No">
-            <label class="form-check-label" for="pregunta3No">No</label>
-          </div>
+        <div class="titulo">
+          <h2>Encuesta</h2>
         </div>
-        <small class="invalid" *ngIf="forma.controls['pregunta3'].errors?.['required'] &&
-        forma.controls['pregunta3'].touched">
-          Esta respuesta es requerida
-        </small>
       </div>
+      <div class="rows">
+        <div class="row">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombre" formControlName="nombre">
+          <small class="invalid" *ngIf="forma.controls['nombre'].errors?.['required'] &&
+              forma.controls['nombre'].touched">
+            El nombre es requerido
+          </small>
+          <small class="invalid" *ngIf="forma.controls['nombre'].errors?.['containsSpaces'] &&
+            forma.controls['nombre'].touched">
+            El nombre no puede contener espacios
+          </small>
+        </div>
+        <div class="row">
+          <label for="apellido" class="form-label">Apellido</label>
+          <input type="text" class="form-control" id="apellido" placeholder="Ingrese apellido"
+            formControlName="apellido">
+          <small class="invalid" *ngIf="forma.controls['apellido'].errors?.['required'] &&
+              forma.controls['apellido'].touched">
+            El apellido es requerido
+          </small>
+        </div>
+        <div class="row">
+          <label for="edad" class="form-label">Fecha de nacimiento</label>
+          <input type="date" class="form-control" id="edad" placeholder="Ingrese fecha de nacimiento"
+            formControlName="edad">
+          <small class="invalid" *ngIf="forma.controls['edad'].errors?.['required'] &&
+              forma.controls['edad'].touched">
+            La edad es requerida
+          </small>
+          <small class="invalid" *ngIf="forma.controls['edad'].errors?.['min'] || 
+              forma.controls['edad'].errors?.['underage'] &&
+              forma.controls['edad'].touched">
+            Debe ser mayor de edad
+          </small>
+        </div>
+        <div class="row">
+          <label for="telefono" class="form-label">Telefono</label>
+          <input type="number" class="form-control" id="telefono" placeholder="Ingrese telefono"
+            formControlName="telefono">
+          <small class="invalid" *ngIf="forma.controls['telefono'].errors?.['required'] &&
+                forma.controls['telefono'].touched">
+            El telefono es requerido
+          </small>
+          <small class="invalid" *ngIf="forma.controls['telefono'].errors?.['okLength'] &&
+                forma.controls['telefono'].touched">
+            El telefono debe tener 10 caracteres
+          </small>
+        </div>
+        <div class="row">
+          <label for="pregunta1" class="form-label">Elija su juego favorito:</label>
+          <select class="form-select" id="pregunta1" formControlName="pregunta1">
+            <option value="">Seleccione uno</option>
+            <option value="mayorMenor">Mayor Menor</option>
+            <option value="preguntados">Preguntados</option>
+            <option value="buscaminas">Buscaminas</option>
+            <option value="ahorcado">Ahorcado</option>
+          </select>
+          <small class="invalid" *ngIf="forma.controls['pregunta1'].errors?.['required'] &&
+              forma.controls['pregunta1'].touched">
+            Esta respuesta es requerida
+          </small>
+        </div>
+        <div class="row">
+          <label for="pregunta2" class="form-label">Elija su juego menos favorito:</label>
+          <select class="form-select" id="pregunta2" formControlName="pregunta2">
+            <option value="">Seleccione uno</option>
+            <option value="mayorMenor">Mayor Menor</option>
+            <option value="preguntados">Preguntados</option>
+            <option value="buscaminas">Buscaminas</option>
+            <option value="ahorcado">Ahorcado</option>
+          </select>
+          <small class="invalid" *ngIf="forma.controls['pregunta2'].errors?.['required'] &&
+                forma.controls['pregunta2'].touched">
+            Esta respuesta es requerida
+          </small>
+        </div>
+        <div class="row">
+          <label for="pregunta3" class="form-label">¿Recomendaria la web a un Amigo?</label>
+          <div id="pregunta3">
+            <div class="form-check">
+              <input type="radio" class="form-check-input" id="pregunta3Si" formControlName="pregunta3" value="Si">
+              <label class="form-check-label" for="pregunta3Si">Si</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" class="form-check-input" id="pregunta3No" formControlName="pregunta3" value="No">
+              <label class="form-check-label" for="pregunta3No">No</label>
+            </div>
+          </div>
+          <small class="invalid" *ngIf="forma.controls['pregunta3'].errors?.['required'] &&
+          forma.controls['pregunta3'].touched">
+            Esta respuesta es requerida
+          </small>
+        </div>
 
-    </div>
+      </div>
+      <div class="row">
+        <button id="submit" type="submit" class="btn btn-primary btn-block"
+          [disabled]="forma.invalid && forma.controls">
+          Aceptar
+        </button>
+      </div>
+    </form>
+    <h3 *ngIf="encuestaSubida">¡Gracias por responder nuestra encuesta!</h3>
     <div class="row">
-      <button type="submit" class="btn btn-primary btn-block" [disabled]="forma.invalid && forma.controls">
-        Aceptar
-      </button>
-    </div>
-  </form>
-  <div class="row">
-    <div class="col-md-12 d-grid gap-2">
-      <button (click)="openResultadosDialog()" *ngIf="usuarioActual == admin" style="margin-top: 10px;"
-        class="btn btn-primary btn-block">
-        Resultados de la Encuesta
-      </button>
+      <div class="col-md-12 d-grid gap-2">
+        <button (click)="openResultadosDialog()" *ngIf="usuarioActual == admin" style="margin-top: 10px;"
+          class="btn btn-primary btn-block">
+          Resultados de la Encuesta
+        </button>
+      </div>
     </div>
   </div>
 </div>

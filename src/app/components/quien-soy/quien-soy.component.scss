@@ -1,15 +1,16 @@
-body {
+.main-container {
   background-image: url("../../../../public/star_pattern.webp");
   background-size: cover;
+  height: 100vh;
 }
 
 .quien-soy {
+  padding: 8% 15%;
   display: flex;
   flex-direction: column;
   align-items: center;
   color: white;
   position: relative;
-  top: -10%;
 }
 
 #links {
@@ -25,7 +26,13 @@ body {
   text-decoration: none;
   display: inline-block;
   background-color: white;
-  border-radius: 40%;
+  top: 10px;
+  max-height: 24px;
+  border-radius: 50%;
+}
+
+#links a svg {
+  top: 10px;
 }
 
 img {

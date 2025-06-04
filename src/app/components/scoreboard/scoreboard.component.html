@@ -2,7 +2,7 @@
     <div class="tabs">
         <button class="tab-link active" (click)="showTab('mayorMenor')">Mayor Menor</button>
         <button class="tab-link" (click)="showTab('preguntados')">Preguntados</button>
-        <button class="tab-link" (click)="showTab('buscaminas')">buscaminas</button>
+        <button class="tab-link" (click)="showTab('buscaminas')">Buscaminas</button>
         <button class="tab-link" (click)="showTab('ahorcado')">Ahorcado</button>
     </div>
 
@@ -12,16 +12,16 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>nombre</th>
-                        <th>fecha</th>
-                        <th>puntaje</th>
+                        <th>Nombre</th>
+                        <th>Fecha</th>
+                        <th>Puntaje</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let player of mayorMenorLeaderboard; let i = index">
                         <td>{{ i + 1 }}</td>
                         <td>{{ player.nombre }}</td>
-                        <td>{{player.fecha.toDate() | date: 'd-M-Y H:M:S'}}</td>
+                        <td>{{player.fecha.toDate() | date: 'd-M-Y H:m'}}</td>
                         <td>{{ player.puntaje }}</td>
                     </tr>
                 </tbody>
@@ -33,9 +33,9 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>nombre</th>
-                        <th>fecha</th>
-                        <th>puntaje</th>
+                        <th>Nombre</th>
+                        <th>Fecha</th>
+                        <th>Puntaje</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -54,9 +54,9 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>nombre</th>
-                        <th>fecha</th>
-                        <th>puntaje</th>
+                        <th>Nombre</th>
+                        <th>Fecha</th>
+                        <th>Puntaje</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -75,9 +75,9 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>nombre</th>
-                        <th>fecha</th>
-                        <th>puntaje</th>
+                        <th>Nombre</th>
+                        <th>Fecha</th>
+                        <th>Puntaje</th>
                     </tr>
                 </thead>
                 <tbody>

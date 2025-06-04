@@ -33,6 +33,7 @@ export class EncuestaComponent implements OnInit {
     },
     foto: '',
   };
+  encuestaSubida: boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -40,6 +41,7 @@ export class EncuestaComponent implements OnInit {
     public dialog: MatDialog
   ) {
     this.usuarioActual = localStorage.getItem('user');
+    this.encuestaSubida = false;
 
     this.forma = this.fb.group({
       nombre: ['', [Validators.required, this.spacesValidator]],
@@ -90,11 +92,12 @@ export class EncuestaComponent implements OnInit {
   }
 
   public aceptar(): void {
+    this.encuestaSubida = true;
     var encuesta: Encuesta = this.forma.getRawValue();
     addDoc(this.encuestas, encuesta);
   }
 
   openResultadosDialog() {
-    this.dialog.open(DialogoResultadoEncuestaComponent);
+    //this.dialog.open(DialogoResultadoEncuestaComponent);
   }
 }

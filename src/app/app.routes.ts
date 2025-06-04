@@ -20,7 +20,7 @@ export const routes: Routes = [
   {
     path: 'juegos',
     loadChildren: () =>
-      import('./components/juegos/juegos.routes').then((m) => m.juegosRoutes),
+      import('./components/juegos/juegos.module').then((m) => m.JuegosModule),
   },
   { path: 'encuesta', component: EncuestaComponent },
   {

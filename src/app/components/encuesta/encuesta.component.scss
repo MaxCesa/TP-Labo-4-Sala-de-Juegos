@@ -1,3 +1,7 @@
+.main-container {
+  margin-top: 8%;
+}
+
 // Dark theme variables
 $background-color: #1c1c1c;
 $text-color: #ffffff;
@@ -78,6 +82,11 @@ h2 {
       box-shadow: none;
     }
   }
+}
+
+h3 {
+  color: red;
+  margin: 40px;
 }
 
 // Button styling

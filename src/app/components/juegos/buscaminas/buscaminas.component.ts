@@ -51,6 +51,7 @@ export class BuscaminasComponent {
   public minasBienMarcadas: number = 0;
   public empezoElJuego: boolean = false;
   public subscribeTimer: number = 0;
+  public puntaje: number = 0;
   private timerSubscription!: Subscription;
   public terminoElJuego: boolean = false;
   afs = inject(Firestore);
@@ -190,6 +191,7 @@ export class BuscaminasComponent {
   }
 
   perder() {
+    this.timerSubscription.unsubscribe();
     this.perdiste = true;
     this.coordenadas.forEach((coordenada) => {
       this.campo[coordenada.x][coordenada.y].estaRevelada = true;
@@ -197,7 +199,9 @@ export class BuscaminasComponent {
   }
   ganar() {
     if (!this.perdiste) {
+      this.puntaje = this.puntuacion();
       this.ganaste = true;
+      this.timerSubscription.unsubscribe();
       confetti({
         particleCount: 100,
         spread: 70,
@@ -244,7 +248,8 @@ export class BuscaminasComponent {
     this.minasBienMarcadas = 0;
     this.empezoElJuego = false;
     this.perdiste = false;
-    this.timerSubscription.unsubscribe();
+    this.ganaste = false;
+    this.puntaje = 0;
     this.subscribeTimer = 0;
   }
 }

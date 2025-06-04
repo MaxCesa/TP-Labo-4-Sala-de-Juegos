@@ -5,29 +5,20 @@ import { HttpClient } from '@angular/common/http';
 import { Country } from './country';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CountriesAPIService {
-
   api: string = 'https://restcountries.com/v3.1/';
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
-  imagenPais:string = "";
-
-  getCountries():Observable<any>{
-    return this.httpClient.get<Country>("https://restcountries.com/v2/name/arg?fields=name,flags");
-  }
+  imagenPais: string = '';
 
   todos(): Observable<any> {
-    return this.httpClient.get(this.api + 'all');
-    
+    return this.httpClient.get(this.api + 'all?fields=translations,flags,name');
   }
 
-  pais(nombrePais:string): Observable<any>{
-    return this.httpClient.get(this.api +'name/' + nombrePais);
-    
+  pais(nombrePais: string): Observable<any> {
+    return this.httpClient.get(this.api + 'name/' + nombrePais);
   }
-
-
 }

@@ -1,12 +1,31 @@
+// components/juegos/juegos.routes.ts
 import { Routes } from '@angular/router';
-import { AhorcadoComponent } from './ahorcado/ahorcado.component';
-import { BuscaminasComponent } from './buscaminas/buscaminas.component';
-import { MayormenorComponent } from './mayormenor/mayormenor.component';
-import { PreguntadosComponent } from './preguntados/preguntados.component';
 
 export const juegosRoutes: Routes = [
-  { path: 'ahorcado', component: AhorcadoComponent },
-  { path: 'buscaminas', component: BuscaminasComponent },
-  { path: 'mayoromenor', component: MayormenorComponent },
-  { path: 'preguntados', component: PreguntadosComponent },
+  {
+    path: 'ahorcado',
+    loadComponent: () =>
+      import('./ahorcado/ahorcado.component').then((m) => m.AhorcadoComponent),
+  },
+  {
+    path: 'mayoromenor',
+    loadComponent: () =>
+      import('./mayormenor/mayormenor.component').then(
+        (m) => m.MayormenorComponent
+      ),
+  },
+  {
+    path: 'preguntados',
+    loadComponent: () =>
+      import('./preguntados/preguntados.component').then(
+        (m) => m.PreguntadosComponent
+      ),
+  },
+  {
+    path: 'buscaminas',
+    loadComponent: () =>
+      import('./buscaminas/buscaminas.component').then(
+        (m) => m.BuscaminasComponent
+      ),
+  },
 ];

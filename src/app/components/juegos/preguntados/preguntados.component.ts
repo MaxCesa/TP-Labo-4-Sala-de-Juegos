@@ -108,10 +108,4 @@ export class PreguntadosComponent implements OnInit {
     this.contadorCorrectas = 0;
     this.cargarPregunta();
   }
-
-  buscarPais(nombre: string) {
-    this.countries
-      .pais(nombre)
-      .subscribe((t) => (this.bandera = t[0].flags.png));
-  }
 }
